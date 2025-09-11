@@ -1,0 +1,75 @@
+importClass("funkin.modchart.modifiers.optional.WiggleModifier");
+
+function onModifierRegisterPost() {
+    modManager.quickRegister(new WiggleModifier(modManager));
+    modManager.registerAux("zSwing");
+	modManager.quickNode(["zSwing"], function(vals, pn) {
+		return [100 * Math.sin(vals[0]) - 50, 100 * -Math.sin(vals[0]) - 50, 100 * Math.sin(vals[0]) - 50, 100 * -Math.sin(vals[0]) - 50];
+	}, ["transform0Z", "transform1Z", "transform2Z","transform3Z"]);
+
+    modManager.registerAux("sineAngle");
+	modManager.quickNode(["sineAngle"], function(vals, pn) {
+		return [5 * Math.sin(vals[0]), 5 * -Math.sin(vals[0]), 5 * Math.sin(vals[0]), 5 * -Math.sin(vals[0])];
+	}, ["confusionOffset0", "confusionOffset1", "confusionOffset2","confusionOffset3"]);
+
+    modManager.registerAux("sineJump");
+	modManager.quickNode(["sineJump"], function(vals, pn) {
+		return [-Math.abs(45 * Math.sin(vals[0])), -Math.abs(-45 * Math.sin(vals[0])), -Math.abs(45 * Math.sin(vals[0])), -Math.abs(-45 * Math.sin(vals[0]))];
+	}, ["transform0Y", "transform1Y", "transform2Y","transform3Y"]);
+}
+
+
+function generateModchart(){
+    modManager.queueEaseL(0, 3, "transform2Y", 0, FlxEase.circOut, -1, -45);
+    modManager.queueEaseL(3, 5, "transform0Y", 0, FlxEase.circOut, -1, -45);
+    modManager.queueEaseL(5, 6, "transform1Y", 0, FlxEase.circOut, -1, -45);
+    modManager.queueEaseL(6, 8, "transform3Y", 0, FlxEase.circOut, -1, -45);
+    modManager.queueEaseL(8, 10, "transform0Y", 0, FlxEase.circOut, -1, -45);
+    modManager.queueEaseL(11, 14, "transform2Y", 0, FlxEase.circOut, -1, -45);
+    modManager.queueSet(14, 'confusionOffset', 360);
+	modManager.queueEaseL(14, 16, 'confusionOffset', 0, FlxEase.expoOut);
+
+
+	for(b in 36 ...128){
+		if(b % 4 == 0){
+            modManager.queueSetB(b, 'wiggle', 0.125 * (b % 8 == 0 ? 1 : -1));
+			modManager.queueEaseLB(b, 2, 'wiggle', 0, 'cubeIn', -1);
+			//modManager.queueEaseLB(b, 1, 'drunk', 0, 'cubeOut',  -1);
+		}
+	}
+
+    for(b in 244 ...308){
+		if(b % 4 == 0){
+            modManager.queueSetB(b, 'wiggle', 0.15 * (b % 8 == 0 ? 1 : -1));
+			modManager.queueEaseLB(b, 2, 'wiggle', 0, 'cubeIn', -1);
+			//modManager.queueEaseLB(b, 1, 'drunk', 0, 'cubeOut',  -1);
+		}
+	}
+    
+    modManager.queueEase(144, 544, 'zSwing', Math.PI * 72, FlxEase.linear);
+    modManager.queueEase(144, 544, 'sineAngle', Math.PI * 72, FlxEase.linear);
+    modManager.queueEase(144, 544, 'sineJump', Math.PI * 96, FlxEase.linear);
+
+    modManager.queueSet(224, "scale", 3, -1);
+    modManager.queueEase(224, 228, "scale", 1, FlxEase.circOut, -1);
+    modManager.queueSet(228, "scale", 3, -1);
+    modManager.queueEase(228, 232, "scale", 1, FlxEase.circOut, -1);
+    modManager.queueSet(232, "scale", 3, -1);
+    modManager.queueEase(232, 236, "scale", 1, FlxEase.circOut, -1);
+
+    for(i in 172...236){
+        modManager.queueEase(i*4, i*4+1, "fieldPitch", (i%2==0 ? 30 : -30), FlxEase.quadOut, -1);
+        modManager.queueEase(i*4 + 1, i*4 +4, "fieldPitch", 0, FlxEase.quadOut, -1);
+    }
+
+    modManager.queueEase(976, 1232, 'zSwing', Math.PI * 72*1.75, FlxEase.linear);
+    modManager.queueEase(976, 1232, 'sineAngle', Math.PI * 72*1.75, FlxEase.linear);
+    modManager.queueEase(976, 1232, 'sineJump', Math.PI * 96*1.75, FlxEase.linear);
+
+    modManager.queueSet(1056, "scale", 3, -1);
+    modManager.queueEase(1056, 1060, "scale", 1, FlxEase.circOut, -1);
+    modManager.queueSet(1060, "scale", 3, -1);
+    modManager.queueEase(1060, 1064, "scale", 1, FlxEase.circOut, -1);
+    modManager.queueSet(1064, "scale", 3, -1);
+    modManager.queueEase(1064, 1068, "scale", 1, FlxEase.circOut, -1);
+}

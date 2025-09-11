@@ -1,0 +1,17 @@
+
+function onModifierRegisterPost() {
+    modManager.registerAux("glitch");
+    modManager.quickNode(['glitch'], function(inputs, pN){
+        if(inputs[0] == 0){
+            return[for (i in 0...8) 0]
+        }
+        return [for (i in 0...8) FlxG.random.float(-inputs[0], inputs[0])];
+    }, ['move0X', 'move1X', 'move2X', 'move3X', 'move0Y', 'move1Y', 'move2Y', 'move3Y']);
+}
+
+function generateModchart(){
+    modManager.queueSet(-16, "glitch", 10, -1);
+    modManager.queueEaseB(0, 4, "glitch", 0, "sineOut", -1);
+
+    modManager.queueEaseB(768, 770, "glitch", 10, "sineIn", -1);
+}

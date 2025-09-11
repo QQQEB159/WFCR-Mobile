@@ -1,0 +1,20 @@
+var shaderp1:FlxRuntimeShader = Paths.getShader('ChromAbEffect');
+var shaderp2:FlxRuntimeShader = Paths.getShader('ChromAbEffect');
+
+var str:Float = 0.0;
+var strength:Float = 0.0;
+
+function onCreatePost(){
+    game.hud.iconP2.shader = shaderp2;
+    game.hud.iconP1.shader = shaderp1;
+}
+
+function onUpdate(elapsed){
+    strength = FlxMath.lerp(strength, 0, elapsed * 5);
+    shaderp2.setFloat("strength", (game.health / 250) + strength);
+    shaderp1.setFloat("strength", (Math.abs(game.health - 2) / 250) + strength);
+}
+
+function onBeatHit(){
+    strength += 0.0055;
+}

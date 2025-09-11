@@ -1,0 +1,64 @@
+function onModifierRegisterPost() {
+	modManager.registerAux("sineYaw");
+	modManager.quickNode(["sineYaw"], function(vals, pn) {
+		return [15 * Math.sin(vals[0])];
+	}, ["fieldYaw"]);
+}
+
+function generateModchart(){
+    var i:Int = 1;
+	for(b in 4...68){
+		if(b % 4 == 0){
+			modManager.queueEaseLB(b, 4, 'fieldX', 0, 'circOut', -1, i*30);
+			modManager.queueEaseLB(b, 4, 'confusionOffset', 0, 'circOut', -1, i*30);
+			i *= -1;
+		}
+	}
+    for(b in 68...132){
+		if(b % 2 == 0){
+			modManager.queueEaseLB(b, 4, 'fieldX', 0, 'circOut', -1, i*30);
+			modManager.queueEaseLB(b, 2, 'confusionOffset', 0, 'circOut', -1, i*30);
+			i *= -1;
+		}
+	}
+	for(b in 136...324){
+		if(b % 4 == 0){
+			modManager.queueEaseLB(b, 4, 'fieldX', 0, 'circOut', -1, i*30);
+			modManager.queueEaseLB(b, 4, 'confusionOffset', 0, 'circOut', -1, i*30);
+			i *= -1;
+		}
+	}
+	modManager.queueEaseB(388, 448, "sineYaw", Math.PI * 18);
+	for(b in 388...452){
+		if(b % 2 == 0){
+			modManager.queueEaseLB(b, 4, 'fieldX', 0, 'circOut', -1, i*30);
+			modManager.queueEaseLB(b, 2, 'confusionOffset', 0, 'circOut', -1, i*30);
+			i *= -1;
+		}
+	}
+	if(!ClientPrefs.midScroll){
+		modManager.queueEaseB(324, 326, "opponentSwap", 0.5, "sineOut", 1);
+	}
+	//modManager.queueEaseB(324, 326, "alpha", 0.5, "sineOut", 0);
+	modManager.queueEaseB(324, 326, "fieldZ", 360, "sineOut", 0);
+	for(i in [0, 1, 3]){
+		modManager.queueEaseB(324, 326, "transform"+i+"Y", ClientPrefs.downScroll ? 300 : -300, "backIn", 0);
+	}
+	modManager.queueEaseB(328, 330, "transform2Y", ClientPrefs.downScroll ? 300 : -300, "backIn", 0);
+	for(i in 0...4){
+		modManager.queueEaseB(354, 356, "transform"+i+"Y", 0, "sineOut", 0);
+	}
+	modManager.queueEaseB(354, 356, "fieldZ", 0, "sineOut", 0);
+	if(!ClientPrefs.midScroll){
+		modManager.queueEaseB(354, 356, "opponentSwap", 0.5, "sineOut", 0);
+		modManager.queueEaseB(386, 388, "opponentSwap", 0, "elasticOut", -1);
+	}
+
+	for(b in 452...580){
+		if(b % 4 == 0){
+			modManager.queueEaseLB(b, 4, 'fieldX', 0, 'circOut', -1, i*30);
+			modManager.queueEaseLB(b, 4, 'confusionOffset', 0, 'circOut', -1, i*30);
+			i *= -1;
+		}
+	}
+}

@@ -1,0 +1,39 @@
+var sky:FlxSprite;
+var beams:FlxSprite;
+var float:FlxSprite;
+var back:FlxSprite;
+var ground:FlxSprite;
+var rocks:FlxSprite;
+var overlay:FlxSprite;
+
+var iTime:Float = 0.0;
+
+function onLoad()
+{
+    stage.add(sky = new FlxSprite(-950, -500).loadGraphic(Paths.image("akiro0006")));
+    sky.scrollFactor.set(0.05, 0.05);
+    sky.antialiasing = true;
+    stage.add(beams = new FlxSprite(-750, -475).loadGraphic(Paths.image("akiro0005")));
+    beams.scrollFactor.set(0.15, 0.15);
+    beams.antialiasing = true;
+    stage.add(float = new FlxSprite(-750, -475).loadGraphic(Paths.image("akiro0004")));
+    float.scrollFactor.set(0.5, 0.5);
+    float.antialiasing = true;
+    stage.add(back = new FlxSprite(-900, -575).loadGraphic(Paths.image("akiro0003")));
+    back.scrollFactor.set(0.75, 0.75);
+    back.antialiasing = true;
+    stage.add(ground = new FlxSprite(-900, -475).loadGraphic(Paths.image("akiro0002")));
+    stage.add(rocks = new FlxSprite(-900, -600).loadGraphic(Paths.image("akiro0001")));
+    rocks.scrollFactor.set(1.25, 1.25);
+    rocks.antialiasing = true;
+    stage.foreground.add(overlay = new FlxSprite().loadGraphic(Paths.image("filter")));
+    overlay.screenCenter(0x11);
+    overlay.scrollFactor.set(0, 0);
+    overlay.blend = 1;
+    overlay.antialiasing = true;
+}
+
+function onUpdate(elapsed:Float){
+    iTime += elapsed;
+    float.y = Math.sin(iTime * (Conductor.bpm  / 200)) * 100 - 575;
+}

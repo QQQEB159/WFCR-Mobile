@@ -1,0 +1,116 @@
+function generateModchart(){
+	for(i in 0...4){
+		modManager.queueSet(-32, 'transform'+i+"Y", ClientPrefs.downScroll ? 200 : -200);
+	}
+
+	for(i in 0...4){
+		modManager.queueEaseL(128+i/2, 4, 'transform'+i+"Y", 0, "circOut", 1);
+	}
+
+	for(i in 0...4){
+		modManager.queueEaseL(188+i/2, 4, 'transform'+i+"Y", 0, "circOut", 0);
+	}
+
+	modManager.queueEase(256, 272, 'localrotateX', 360, "quintOut", -1);
+	modManager.queueEase(256, 272, 'confusionOffset', 360, "quintOut", -1);
+	modManager.queueEaseL(256, 16, 'schmovinDrunk', 0, "quintOut", -1, 5);
+
+
+	for(i in 0...4){
+		modManager.queueEaseL(398+i/2, 4, 'transform'+i+"Y", ClientPrefs.downScroll ? 200 : -200, "circIn", -1);
+	}
+
+	for(i in 0...4){
+		modManager.queueEaseL(512+i/2, 4, 'transform'+i+"Y", 0, "circOut", 1);
+	}
+
+	for(i in 0...4){
+		modManager.queueEaseL(588+i/2, 4, 'transform'+i+"Y", 0, "circOut", 0);
+	}
+
+
+    var i:Int = 1;
+    for(b in 140...196){
+		modManager.queueEaseLB(b, 1, 'localrotateY', 0, 'circOut', -1, i*-45);
+		modManager.queueEaseLB(b, 1, 'localrotateX', 0, 'circOut', -1, i*45);
+		i *= -1;
+	}
+
+	modManager.queueEase(1056, 1072, 'localrotateX', -360, "quintOut", -1);
+	modManager.queueEase(1056, 1072, 'confusionOffset', 0, "quintOut", -1);
+	modManager.queueEaseL(1056, 16, 'schmovinDrunk', 0, "quintOut", -1, 5);
+
+	for(b in 296...312){
+		modManager.queueEaseLB(b, 1, 'localrotateY', 0, 'circOut', -1, i*-45);
+		modManager.queueEaseLB(b, 1, 'localrotateX', 0, 'circOut', -1, i*45);
+		i *= -1;
+	}
+
+	modManager.queueEase(1312, 1328, 'localrotateX', 360, "quintOut", -1);
+	modManager.queueEase(1312, 1328, 'confusionOffset', 360, "quintOut", -1);
+	modManager.queueEaseL(1312, 16, 'schmovinDrunk', 0, "quintOut", -1, 5);
+
+
+    /*modManager.registerAux('beatScale');
+	modManager.quickNode(['beatScale'], function(inputs, pN){
+		var beat:Float = curDecBeat;
+		return [
+			(Math.sqrt(beat % 1) * 0.25), (Math.sqrt(beat % 1) * 0.25)
+		];
+	}, ['scaleX', 'scaleY']);
+    modManager.queueSetB(140, 'beatScale', 1.5);
+    modManager.queueSetB(196, 'beatScale', 0);
+    modManager.queueSetB(300, 'beatScale', 2);
+    modManager.queueSetB(312, 'beatScale', 0);*/
+
+	
+	function noteShitLol(step:Int, duration:Int, ?strength:Float = 1, ?ease:String = "linear", ?field:Int = -1){
+		modManager.queueEaseL(step, duration, 'scale', 1, ease, field, Math.abs(1.15*strength));
+		modManager.queueEaseL(step, duration, 'move0Y', 0, ease, field, 0.3*strength);
+		modManager.queueEaseL(step, duration, 'move1Y', 0, ease, field, 0.15*strength);
+		modManager.queueEaseL(step, duration, 'move2Y', 0, ease, field, -0.15*strength);
+		modManager.queueEaseL(step, duration, 'move3Y', 0, ease, field, -0.3*strength);
+	}
+
+	//var i:Int = 1;
+
+	function doTheNoteShit(section:Int){
+		noteShitLol(16*section, 4, 1*i, "sineOut");
+		noteShitLol((16*section)+8, 4, 1*(-i), "sineOut");
+		noteShitLol((16*section)+10, 3, 1*i, "sineOut");
+		noteShitLol((16*section)+13, 3, 1*(-i), "sineOut");
+		i *= -1;
+
+	}
+	
+	for(sec in 8...24){
+		doTheNoteShit(sec);
+	}
+
+	for(sec in 58...74){
+		doTheNoteShit(sec);
+	}
+
+	modManager.queueSet(0, 0, 'schmovinDrunk', 0, "quintOut", -1);
+	modManager.queueSet(0, 0, 'schmovinDrunkSpeed', -1, "quintOut", -1);
+	modManager.queueSet(0, 0, 'schmovinDrunkPeriod', 1, "quintOut", -1);
+
+	modManager.queueEase(1568, 1568+16, 'localrotateX', 0, "quintOut", -1);
+	modManager.queueEase(1568, 1568+16, 'confusionOffset', -360, "quintOut", -1);
+	modManager.queueEaseL(1568, 16, 'schmovinDrunk', 0, "quintOut", -1, 5);
+
+
+	for(i in 0...4){
+		modManager.queueEaseL(1580+i/2, 4, 'transform'+i+"Y", ClientPrefs.downScroll ? 200 : -200, "circIn", -1);
+	}
+
+
+	/*for(sec in 35...49){
+		doTheNoteShit(sec);
+		for(i in 0...16){
+			if(i % 4 == 0){
+				modManager.queueEaseL((sec*16)+i, 4, 'stealth', 0, "sineOut", -1, 0.5);
+			}
+		}
+	}*/
+}

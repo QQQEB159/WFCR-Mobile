@@ -1,0 +1,82 @@
+function generateModchart(){
+    var i:Int = 1;
+	for(b in 4...100){
+		if(b % 4 == 0){
+            modManager.queueEaseLB(b, 4, 'localrotateY', 0, 'circOut', -1, i*45);
+			modManager.queueEaseLB(b, 4, 'confusionXOffset', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 4, 'confusionYOffset', 0, 'circOut', -1, -i*45);
+			i *= -1;
+		}
+	}
+    for(b in 100...164){
+		if(b % 2 == 0){
+            modManager.queueEaseLB(b, 2, 'localrotateY', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 2, 'confusionXOffset', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 2, 'confusionYOffset', 0, 'circOut', -1, -i*45);
+			i *= -1;
+		}
+	}
+    for(b in 168...232){
+		if(b % 4 == 0){
+            modManager.queueEaseLB(b, 4, 'localrotateY', 0, 'circOut', -1, i*45);
+			modManager.queueEaseLB(b, 4, 'confusionXOffset', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 4, 'confusionYOffset', 0, 'circOut', -1, -i*45);
+			i *= -1;
+		}
+	}
+    if(!ClientPrefs.midScroll){
+        modManager.queueEase(944, 952, "opponentSwap", 0.5, "sineOut", -1);
+        modManager.queueEase(944, 952, "confusionOffset", 360, "sineOut", 1);
+        modManager.queueEase(944, 952, "confusionOffset", -360, "sineOut", 0);
+    }
+    modManager.queueEase(944, 952, "alpha", 0.9, "sineOut", 0);
+    modManager.queueEase(944, 952, "fieldZ", 320, "sineOut", 0);
+    modManager.queueEase(944, 952, "schmovinDrunk", 0.5,  "sineOut", -1);
+    modManager.queueEase(944, 952, "schmovinDrunkPeriod", -0.33,  "sineOut", -1);
+    modManager.queueEase(944, 952, "boost", 1.33, "sineOut", -1);
+
+
+
+
+    modManager.queueEase(1008, 1016, "fieldZ", 0, "sineOut", 0);
+    modManager.queueEase(1008, 1016, "fieldZ", 320, "sineOut", 1);
+
+    modManager.queueEase(1008, 1016, "alpha", 0.9, "sineOut", 1);
+    modManager.queueEase(1008, 1016, "alpha", 0, "sineOut", 0);
+
+    /*modManager.queueEase(1056, 1016, "fieldZ", 0, "sineOut", 1);
+    modManager.queueEase(1056, 1016, "fieldZ", 320, "sineOut", 0);
+
+    modManager.queueEase(1056, 1064, "alpha", 0.9, "sineOut", 0);
+    modManager.queueEase(1056, 1064, "alpha", 0, "sineOut", 1);*/
+
+    modManager.queueEase(1200, 1216, "boost", 0, "linear", -1);
+
+    if(!ClientPrefs.midScroll){
+        modManager.queueEase(1200, 1216, "opponentSwap", 0, "sineOut", -1);
+        modManager.queueEase(1200, 1216, "confusionOffset", 0, "sineOut", -1);
+    }
+
+    modManager.queueEase(1200, 1216, "fieldZ", 0, "sineOut", -1);
+
+    modManager.queueEase(1200, 1216, "alpha", 0, "sineOut", -1);
+
+    modManager.queueEase(1200, 1216, "schmovinDrunk", 0,  "sineOut", -1);
+
+    for(b in 304...336){
+		if(b % 2 == 0){
+            modManager.queueEaseLB(b, 2, 'localrotateY', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 2, 'confusionXOffset', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 2, 'confusionYOffset', 0, 'circOut', -1, -i*45);
+			i *= -1;
+		}
+	}
+    for(b in 336...364){
+		if(b % 4 == 0){
+            modManager.queueEaseLB(b, 4, 'localrotateY', 0, 'circOut', -1, i*45);
+			modManager.queueEaseLB(b, 4, 'confusionXOffset', 0, 'circOut', -1, i*45);
+            modManager.queueEaseLB(b, 4, 'confusionYOffset', 0, 'circOut', -1, -i*45);
+			i *= -1;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+function onLoad(){
+    var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image("sporting/oek0003"));
+    bg.scrollFactor.set(0.4, 0.4);
+    stage.add(bg);
+
+    var middle:FlxSprite = new FlxSprite(-750, -350).loadGraphic(Paths.image("sporting/oek0002"));
+    middle.scrollFactor.set(0.75, 0.75);
+    stage.add(middle);
+
+    stage.add(new FlxSprite(-700, -350).loadGraphic(Paths.image("sporting/oek0001")));
+}

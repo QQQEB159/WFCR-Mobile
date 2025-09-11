@@ -1,0 +1,41 @@
+importClass("funkin.objects.Character");
+
+var speaker:Character = new Character(this.x, this.y, 'speaker');
+
+function onCreatePost(){
+    speaker.setupCharacter();
+    speaker.x -= 450;
+    speaker.y += 285;
+    speaker.antialiasing = ClientPrefs.globalAntialiasing;
+    game.addBehindGF(speaker);
+
+    if(ClientPrefs.shaders != 'None' && PlayState.SONG.song.toLowerCase() == "reborn"){
+
+        var rim = new DropShadowShader();
+        rim.setAdjustColor(-46, -38, -25, -20);
+        rim.color = 0xFF5D00FF;
+        speaker.shader = rim;
+        rim.attachedSprite = speaker;
+        rim.angle = 90;
+
+        speaker.animation.callback = (function() {
+            rim.updateFrameInfo(speaker.frame);
+        });
+    }
+}
+
+function onUpdate(){
+    speaker.alpha = this.alpha;
+    speaker.visible = this.visible;
+    speaker.x = this.x - 450;
+    speaker.y = this.y + 285 * this.scale.y;
+    speaker.scale.x = this.scale.x;
+    speaker.scale.y = this.scale.y;
+    speaker.scrollFactor.x = this.scrollFactor.x;
+    speaker.scrollFactor.y = this.scrollFactor.y;
+}
+
+function onDance()
+{
+    speaker.dance();
+}

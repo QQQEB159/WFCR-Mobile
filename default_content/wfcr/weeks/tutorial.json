@@ -1,0 +1,31 @@
+{
+  "songs": [
+    ["alarmiing", "corruptedmatt", [46, 0, 13]],
+    ["catalyst", "corruptedmatt", [115, 50, 75]],
+    ["decay", "corruptedmatt", [115, 50, 75]],
+    ["genesis", "corruptedmatt", [115, 50, 75]],
+    ["haxchi", "corruptedmatt", [115, 50, 75]],
+    ["homebrew", "corruptedmatt2", [115, 50, 75]],
+    ["installmii", "corruptedmatt2", [115, 50, 75]],
+    ["legacy", "corruptedmatt2", [115, 50, 75]],
+    ["nostalgia", "corruptedmatt2", [115, 50, 75]],
+    ["override", "corruptedmatt2", [115, 50, 75]],
+    ["reborn", "corruptedmatt2", [115, 50, 75]],
+    ["terminus", "corruptedmatt2", [115, 50, 75]],
+    ["tiramisu", "corruptedmatt2", [115, 50, 75]],
+    ["tussle", "corruptedmatt2", [115, 50, 75]],
+    ["unbound", "corruptedmatt", [46, 0, 13]]
+  ],
+
+  "weekCharacters": ["", "bf", "gf"],
+  "weekBackground": "stage",
+
+  "storyName": "",
+  "weekBefore": "tutorial",
+  "weekName": "Tutorial",
+  "startUnlocked": true,
+  "difficulties": "hard",
+
+  "hideStoryMode": false,
+  "hideFreeplay": false
+}

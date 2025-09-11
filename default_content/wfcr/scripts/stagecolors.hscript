@@ -1,0 +1,48 @@
+importClass("funkin.scripts.Util");
+
+function getShaderFrag(file:String):String{
+    return File.getContent('content/wfcr/shaders/'+file+'.frag');
+}
+
+var shader:CustomShader = new CustomShader(getShaderFrag('HSVEffect'));
+
+var offset:Float = 0;
+
+function onCreatePost(){
+    shader.setFloat("hue", 0);
+    if(PlayState.SONG.song.toLowerCase() == "reborn"){
+        shader.setFloat("hue", -0.25);
+        offset = -0.25;
+    }
+    if(ClientPrefs.shaders != "None"){
+        for (member in game.stage.members){
+            member.shader = shader;
+        }
+        for (member in game.stage.foreground.members){
+            member.shader = shader;
+        }
+    }
+}
+
+function onEvent(name, value1, value2, pos){
+    if(name.toLowerCase() == "colorswap"){
+        var splitValue1:Array<String> = value1.split(',');
+		var splitValue2:Array<String> = value2.split(',');
+		Util.cancelTween(Std.string(splitValue1));
+			game.modchartTweens.set(Std.string(splitValue1),
+			FlxTween.num(Std.parseFloat(splitValue2[2]), Std.parseFloat(splitValue2[1]), Std.parseFloat(splitValue2[0]), {
+				ease: Util.getFlxEaseByString(splitValue2[3]),
+				onComplete: function(twn:FlxTween) {
+					game.callOnLuas('onTweenCompleted', [Std.string(splitValue2)]);
+					game.modchartTweens.remove(Std.string(splitValue2));
+				},
+				startDelay: 0
+			}, (value) -> {
+				shader.setFloat("hue", value + offset);
+			}));
+		
+    }
+    if(name.toLowerCase() == "huechange"){
+        shader.tween("hue", value1 + offset, Conductor.stepCrochet * 0.001 * value2);
+    }
+}

@@ -1,0 +1,161 @@
+function onModifierRegisterPost() {
+	modManager.registerAux("spinaround");
+	modManager.quickNode(["spinaround"], function(vals, pn) {
+		return [0.5 - 0.5 * Math.cos(vals[0] * (Math.PI/180)) - (ClientPrefs.midScroll ? 0.5 : 0), Math.sin(vals[0] * (Math.PI/180)) * 270 * (1 - pn * 2)];
+	}, ["opponentSwap", "transformZ"]);
+}
+
+function generateModchart(){
+	var modMgr = game.modManager;
+
+    modMgr.queueSet(0, "drunkZOffset", 3, -1);
+    modMgr.queueSet(0, "drunkZSpeed", 0.5, -1);
+
+    modMgr.queueSet(0, "drunkYOffset", 3, -1);
+    modMgr.queueSet(0, "drunkYSpeed", 6, -1);
+
+    modMgr.queueSet(120, "dark", 1, -1);
+    modMgr.queueEase(120, 128, "dark", 0, FlxEase.circOut, -1);
+
+    modMgr.queueSet(304, "bumpyX", 0.3, -1);
+    modMgr.queueEase(304, 320, "bumpyX", 0, FlxEase.bounceInOut, -1);
+    modMgr.queueSet(304, "bumpyY", -0.3, -1);
+    modMgr.queueEase(304, 320, "bumpyY", 0, FlxEase.bounceInOut, -1);
+
+
+
+    modMgr.queueEase(2112, 2116, "drunkY", 0.33, FlxEase.circOut, 0);
+    modMgr.queueEase(2112, 2116, "opponentSwap", 0.5, FlxEase.backOut, 1);
+    modMgr.queueEase(2112, 2116, "alpha", 0.75, FlxEase.linear, 1);
+    modMgr.queueEase(2112, 2240, "spinaround", 360*3, FlxEase.linear, 0);
+    modMgr.queueEase(2240-4, 2240, "opponentSwap", 0, FlxEase.backOut, 1);
+    modMgr.queueEase(2240-4, 2240, "alpha", 0, FlxEase.linear, 1);
+    modMgr.queueEase(2240-4, 2240, "drunkY", 0, FlxEase.circOut, 0);
+
+
+    
+    modMgr.queueEase(672, 686, "fieldZ", 720, FlxEase.circOut, 0);
+    modMgr.queueEase(672, 686, "alpha", 0.5, FlxEase.circOut, 0);
+    modMgr.queueEase(672, 686, "drunkZ", 1.5, FlxEase.circOut, 0);
+
+    for(i in 672...928){
+        if(i % 16 == 0 ){
+            modMgr.queueSet(i, "tipsyX", i*16 % 32 == 0 ? 0.75 : -0.75);
+            modMgr.queueEaseL(i, 8, "tipsyX", 0, FlxEase.quadOut);
+            modMgr.queueSet(i, "drunk", i*16 % 32 == 0 ? 0.75 : -0.75);
+            modMgr.queueEaseL(i, 8, "drunk", 0, FlxEase.quadOut);
+        }
+    }
+
+    modMgr.queueEase(736, 744, "alpha", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(736, 744, "alpha", 0.5, FlxEase.circOut, 1);
+    modMgr.queueEase(736, 744, "drunkZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(736, 744, "drunkZ", 1.5, FlxEase.circOut, 1);
+    modMgr.queueEase(736, 744, "fieldZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(736, 744, "fieldZ", 720, FlxEase.circOut, 1);
+
+    modMgr.queueEase(800, 816, "alpha", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(800, 816, "alpha", 0.5, FlxEase.circOut, 0);
+    modMgr.queueEase(800, 816, "drunkZ", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(800, 816, "drunkZ", 1.5, FlxEase.circOut, 0);
+    modMgr.queueEase(800, 816, "fieldZ", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(800, 816, "fieldZ", 720, FlxEase.circOut, 0);
+
+    modMgr.queueEase(828, 832, "alpha", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(828, 832, "alpha", 0.5, FlxEase.circOut, 1);
+    modMgr.queueEase(828, 832, "drunkZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(828, 832, "drunkZ", 1.5, FlxEase.circOut, 1);
+    modMgr.queueEase(828, 832, "fieldZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(828, 832, "fieldZ", 720, FlxEase.circOut, 1);
+
+    modMgr.queueEase(860, 864, "alpha", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(860, 864, "alpha", 0.5, FlxEase.circOut, 0);
+    modMgr.queueEase(860, 864, "drunkZ", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(860, 864, "drunkZ", 1.5, FlxEase.circOut, 0);
+    modMgr.queueEase(860, 864, "fieldZ", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(860, 864, "fieldZ", 720, FlxEase.circOut, 0);
+
+    
+    modMgr.queueEase(892, 896, "alpha", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(892, 896, "alpha", 0.5, FlxEase.circOut, 1);
+    modMgr.queueEase(892, 896, "drunkZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(892, 896, "drunkZ", 1.5, FlxEase.circOut, 1);
+    modMgr.queueEase(892, 896, "fieldZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(892, 896, "fieldZ", 720, FlxEase.circOut, 1);
+
+    modMgr.queueEase(928, 932, "alpha", 0, FlxEase.circOut, -1);
+    modMgr.queueEase(928, 932, "fieldX", 0, FlxEase.circOut, -1);
+    modMgr.queueEase(928, 932, "fieldZ", 0, FlxEase.circOut, -1);
+    modMgr.queueEase(928, 932, "drunkZ", 0, FlxEase.circOut, -1);
+
+    modMgr.queueSet(1248, "tipsyXSpeed", 7.5);
+    modMgr.queueSet(1248, "tipsyX", 1);
+    modMgr.queueEaseL(1248, 16, "tipsyX", 0, FlxEase.quadOut);
+    modMgr.queueEase(1248, 1248+16, "alpha", 1, FlxEase.quadOut);
+    modMgr.queueSet(1248+17, "dark", 1);
+    modMgr.queueSet(1248+18, "alpha", 0);
+
+    modMgr.queueSet(1300, "tipsyXSpeed", 1);
+    modMgr.queueEase(1304, 1308, "dark", 0, FlxEase.quadOut);
+
+
+
+
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEase(672, 686, "fieldX", 320, FlxEase.circOut, 1);
+        modMgr.queueEase(736, 744, "fieldX", 0, FlxEase.circOut, 1);
+        modMgr.queueEase(736, 744, "fieldX", -320, FlxEase.circOut, 0);
+        modMgr.queueEase(800, 816, "fieldX", 320, FlxEase.circOut, 1);
+        modMgr.queueEase(800, 816, "fieldX", 0, FlxEase.circOut, 0);
+        modMgr.queueEase(828, 832, "fieldX", 0, FlxEase.circOut, 1);
+        modMgr.queueEase(828, 832, "fieldX", -320, FlxEase.circOut, 0);
+        modMgr.queueEase(860, 864, "fieldX", 320, FlxEase.circOut, 1);
+        modMgr.queueEase(860, 864, "fieldX", 0, FlxEase.circOut, 0);
+        modMgr.queueEase(892, 896, "fieldX", 0, FlxEase.circOut, 1);
+        modMgr.queueEase(892, 896, "fieldX", -320, FlxEase.circOut, 0);
+        modMgr.queueEase(928, 932, "fieldX", 0, FlxEase.circOut, -1);
+    }
+    
+    
+    /*modMgr.queueEase(1440, 1448, "fieldPitch", 180, FlxEase.circOut, 0);
+    modMgr.queueEase(1456, 1464, "fieldYaw", 180, FlxEase.circOut, 0);
+    modMgr.queueEaseP(1456, 1464, "alpha", 85, FlxEase.circOut, 1);
+
+    modMgr.queueEase(1492, 1496, "fieldYaw", 0, FlxEase.circOut, 0);
+    modMgr.queueEaseP(1492, 1496, "alpha", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(1496, 1504, "fieldPitch", 0, FlxEase.circOut, 0);*/
+
+    for(i in 0...30){
+        modMgr.queueSet(i*4, "scale" + i%4, 2, -1);
+        modMgr.queueEase(i*4, (i*4) + 4, "scale"+i%4, 1, FlxEase.circOut, -1);
+        modMgr.queueSet(i*4, "confusionOffset" + i%4, (i%2==0 ? 45 : -45), -1);
+        modMgr.queueEase(i*4, i*4+4, "confusionOffset" + i%4, 0, FlxEase.quadOut, -1);
+    }
+
+    for(i in 104...168){
+        modMgr.queueSet(i*4, "scale" + i%4, 2, -1);
+        modMgr.queueEase(i*4, (i*4) + 4, "scale"+i%4, 1, FlxEase.circOut, -1);
+        modMgr.queueSet(i*4, "confusionOffset" + i%4, (i%2==0 ? 45 : -45), -1);
+        modMgr.queueEase(i*4, i*4+4, "confusionOffset" + i%4, 0, FlxEase.quadOut, -1);
+    }
+
+    for(i in 232...296){
+        modMgr.queueSet(i*4, "scale" + i%4, 2, -1);
+        modMgr.queueEase(i*4, (i*4) + 4, "scale"+i%4, 1, FlxEase.circOut, -1);
+        modMgr.queueSet(i*4, "confusionOffset" + i%4, (i%2==0 ? 45 : -45), -1);
+        modMgr.queueEase(i*4, i*4+4, "confusionOffset" + i%4, 0, FlxEase.quadOut, -1);
+    }
+
+    
+    for(i in 464...624){
+        modMgr.queueSet(i*4, "scale" + i%4, 2, -1);
+        modMgr.queueEase(i*4, (i*4) + 4, "scale"+i%4, 1, FlxEase.circOut, -1);
+        modMgr.queueSet(i*4, "confusionOffset" + i%4, (i%2==0 ? 45 : -45), -1);
+        modMgr.queueEase(i*4, i*4+4, "confusionOffset" + i%4, 0, FlxEase.quadOut, -1);
+    }
+
+    modMgr.queueSet(2496, "tipsyXSpeed", 7.5);
+    modMgr.queueSet(2496, "tipsyX", 1);
+    modMgr.queueEaseL(2496, 16, "tipsyX", 0, FlxEase.quadOut);
+    modMgr.queueEase(2496, 2496+16, "alpha", 1, FlxEase.quadOut);
+}

@@ -1,0 +1,78 @@
+importClass("flixel.math.FlxRect");
+
+var healthBarBottom:FlxSprite;
+
+var healthBarTop:FlxSprite;
+
+var barClipRect:FlxRect;
+
+function onCreatePost(){
+    healthBarBottom = new FlxSprite(0, 0);
+    healthBarBottom.loadGraphic(Paths.image('full'));
+    healthBarBottom.antialiasing = true;
+    healthBarBottom.camera = game.camHUD;
+    healthBarBottom.screenCenter();
+    healthBarBottom.scale.set(0.5, 0.5);
+    healthBarBottom.y = (game.hud.getHealthbar().y / 2) + healthBarBottom.height / 8 + 10 + 5 + 25; //Why the fuck is this such a random ass number :sob:
+    game.addBehindGF(healthBarBottom);
+
+    if(ClientPrefs.downScroll){
+        healthBarBottom.y -= 285;
+    }
+
+    healthBarTop = new FlxSprite(healthBarBottom.x, healthBarBottom.y);
+    healthBarTop.loadGraphic(Paths.image('full'));
+    healthBarTop.antialiasing = true;
+    healthBarTop.camera = game.camHUD;
+    healthBarTop.scale.set(0.5, 0.5);
+    game.addBehindGF(healthBarTop);
+    
+    barClipRect = new FlxRect(0, 0, healthBarTop.width / 2, healthBarTop.height);
+
+    healthBarTop.clipRect = barClipRect;
+
+    //game.hud.remove(game.hud.getHealthbar());
+    game.hud.healthBarBG.alpha = 0;
+    game.hud.getHealthbar().alpha = 0;
+    healthBarBottom.color = game.boyfriend.healthColor;
+    healthBarTop.color = game.dad.healthColor;
+}
+var toggled:Bool = false;
+
+function onUpdatePost(){
+    barClipRect.setSize(healthBarTop.width  -((game.health / 2) *  healthBarTop.width), healthBarTop.height);
+    healthBarTop.clipRect = barClipRect;
+
+    if(!toggled){
+        game.hud.iconP2.x = healthBarBottom.x + (healthBarBottom.width / 4) - 15;
+        game.hud.iconP1.x = healthBarBottom.x + (healthBarBottom.width / 1.5) - 11;
+
+        healthBarTop.alpha = healthBarBottom.alpha = game.hud.iconP1.alpha = game.hud.iconP2.alpha = ClientPrefs.hpOpacity;
+    }
+}
+
+function onResume(){
+    game.hud.getHealthbar().alpha = 0;
+}
+var lastPos = 0;
+function onEvent(name, v1, v2, pos){
+    if(name == "toggle default notes"){
+        if(lastPos == pos){
+            return;
+        }
+        if(!toggled){
+            game.hud.healthBarBG.alpha = 1;
+            game.hud.getHealthbar().alpha = 1;
+            healthBarTop.alpha = 0;
+            healthBarBottom.alpha = 0;
+        }
+        else{
+            game.hud.healthBarBG.alpha = 0;
+            game.hud.getHealthbar().alpha = 0;
+            healthBarTop.alpha = 1;
+            healthBarBottom.alpha = 1;
+        }
+        toggled = !toggled;
+        lastPos = pos;
+    }
+}

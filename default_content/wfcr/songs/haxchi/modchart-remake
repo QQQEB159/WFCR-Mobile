@@ -1,0 +1,86 @@
+importClass("Sys");
+
+var wasFullscreen:Bool = FlxG.fullscreen;
+
+function getCenteredWindowX():Float {
+    return (FlxG.stage.window.display.currentMode.width / 2) - (FlxG.stage.window.width / 2);
+}
+
+function getCenteredWindowY():Float {
+    return (FlxG.stage.window.display.currentMode.height / 2) - (FlxG.stage.window.height / 2);
+}
+
+function onCreatePost(){
+   
+    if(wasFullscreen){
+        FlxG.fullscreen = false;
+    
+        FlxG.stage.window.x = 0;
+        FlxG.stage.window.y = 0;
+        FlxG.stage.window.borderless = true;
+        FlxG.stage.window.width = FlxG.stage.window.display.currentMode.width;
+        FlxG.stage.window.height = FlxG.stage.window.display.currentMode.height;
+    }
+    else{
+        Main.centerWindow();
+    }
+    FlxG.stage.window.onMove.removeAll();
+}
+
+function onBeatHit(){
+    if(curBeat == 124){
+        if(FlxG.fullscreen){
+            FlxG.fullscreen = false;
+            if(Sys.systemName() != "Linux"){
+                FlxG.stage.window.width += 1;
+            }
+        }
+        FlxTween.tween(FlxG.stage.window, {opacity: 0}, 1);
+    }
+    if(curBeat == 132){
+        FlxG.camera.flash();
+        FlxG.stage.window.opacity = 1;
+        FlxG.stage.window.width = 1280;
+        FlxG.stage.window.height = 720;
+        FlxG.stage.window.x = getCenteredWindowX();
+        FlxG.stage.window.y = getCenteredWindowY();
+    }
+    if(curBeat > 132 && curBeat < 172){
+        if(curBeat % 4 == 0){
+            FlxTween.tween(FlxG.stage.window, {x: getCenteredWindowX() - (curBeat % 8 == 0 ? -200 : 200)}, Conductor.crochet / 500, {ease: FlxEase.backIn,  onComplete: (_) -> {
+                FlxG.stage.window.x = getCenteredWindowX();
+            }});
+        }
+    }
+}
+
+var iTime:Float = 0;
+
+function onUpdatePost(elapsed){
+    iTime += elapsed;
+    if(curBeat >= 196){
+        FlxG.stage.window.y = Std.int((Math.sin(iTime)*720));
+    }
+}
+
+function onDestroy(){
+    FlxG.fullscreen = wasFullscreen;
+    FlxG.stage.window.opacity = 1;
+    FlxG.stage.window.borderless = false;
+}
+
+
+function onEvent(name, argument1, argument2, strumTime){
+    switch(name.toLowerCase()){
+        case "window bop x":
+            var prevx:Int = FlxG.stage.window.x;
+            FlxG.stage.window.x += Std.parseInt(argument1);
+            FlxTween.tween(FlxG.stage.window, {x: prevx}, argument2, {ease: FlxEase.sineOut});
+
+        case "window bop y":
+            var prevy:Int = FlxG.stage.window.y;
+            FlxG.stage.window.y += Std.parseInt(argument1);
+            FlxTween.tween(FlxG.stage.window, {y: prevy}, argument2, {ease: FlxEase.sineOut});
+
+    }
+}

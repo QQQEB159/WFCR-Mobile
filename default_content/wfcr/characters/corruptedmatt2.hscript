@@ -1,0 +1,24 @@
+
+function onCreatePost(){
+    if(ClientPrefs.shaders == "None")
+        return;
+    if(PlayState.SONG.song.toLowerCase() == "reborn"){
+
+        var rim = new DropShadowShader();
+        rim.setAdjustColor(-46, 0, -25, -20);
+        rim.color = 0xFF5D00FF;
+        this.shader = rim;
+        rim.attachedSprite = this;
+        rim.angle = 90;
+        rim.split = 0.003;
+
+        this.animation.callback = (function() {
+            rim.updateFrameInfo(this.frame);
+        });
+    }
+    else{
+        this.shader = Paths.getShader(PlayState.SONG.song.toLowerCase() == "reborn" ? 'ChromAbGreenPurple' : 'ChromAbEffectR');
+        this.shader.setFloat("strength", 0.0075);
+        this.useFramePixels = true;
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "animations": [
+        {
+            "offsets": [
+                0,
+                0
+            ],
+            "indices": [],
+            "fps": 24,
+            "anim": "idle",
+            "loop": true,
+            "name": "defected idle"
+        },
+        {
+            "offsets": [
+                0,
+                0
+            ],
+            "indices": [],
+            "fps": 24,
+            "anim": "singLEFT",
+            "loop": false,
+            "name": "defected left"
+        },
+        {
+            "offsets": [
+                0,
+                0
+            ],
+            "indices": [],
+            "fps": 24,
+            "anim": "singDOWN",
+            "loop": false,
+            "name": "defected down"
+        },
+        {
+            "offsets": [
+                0,
+                0
+            ],
+            "indices": [],
+            "fps": 24,
+            "anim": "singUP",
+            "loop": false,
+            "name": "defected up"
+        },
+        {
+            "offsets": [
+                0,
+                0
+            ],
+            "indices": [],
+            "fps": 24,
+            "anim": "singRIGHT",
+            "loop": false,
+            "name": "defected right"
+        }
+    ],
+    "no_antialiasing": false,
+    "image": "defected",
+    "position": [
+        0,
+        -100
+    ],
+    "healthicon": "orangedefect",
+    "flip_x": false,
+    "healthbar_colors": [
+        255,
+        125,
+        0
+    ],
+    "camera_position": [
+        0,
+        0
+    ],
+    "sing_duration": 6.1,
+    "scale": 1
+}

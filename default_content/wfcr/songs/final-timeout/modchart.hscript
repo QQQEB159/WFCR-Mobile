@@ -1,0 +1,63 @@
+function onModifierRegisterPost() {
+    modManager.registerAux("cosecantBopX");
+    modManager.quickNode(['cosecantBopX'], function(inputs, pN){
+        return [(1/FlxMath.fastSin(curDecBeat)) * inputs[0]];
+    }, ["fieldX"]);
+}
+
+function generateModchart(){
+    for(i in 0...8){
+        modManager.queueSet(-32, "confusionXOffset"+i, ClientPrefs.downScroll ? 78 : 101, -1);
+    }
+    modManager.queueEase(96, 100, 'confusionXOffset2', 0, 'sineOut', -1);
+    modManager.queueEase(104, 108, 'confusionXOffset1', 0, 'sineOut', -1);
+    modManager.queueEase(112, 116, 'confusionXOffset3', 0, 'sineOut', -1);
+    modManager.queueEase(120, 124, 'confusionXOffset0', 0, 'sineOut', -1);
+
+    modManager.queueEase(124, 128, 'cosecantBopX', 5, 'sineOut', -1);
+
+    modManager.queueEase(880, 896, 'cosecantBopX', 0, 'sineOut', -1);
+
+    modManager.queueEase(888, 896, 'boost', 0.5, 'sineOut', -1);
+    modManager.queueEase(888, 896, 'schmovinDrunkZ', 2, 'sineOut', -1);
+    modManager.queueEase(888, 896, 'schmovinDrunkZPeriod', -0.66, 'sineOut', -1);
+    modManager.queueEase(888, 896, 'localrotateX', -180, 'sineOut', -1);
+    modManager.queueEase(1088, 1140, 'localrotateX', -360, 'quadInOut', -1);
+    modManager.queueEase(1088, 1140, 'schmovinDrunkZ', 0, 'quadInOut', -1);
+    modManager.queueEase(1088, 1140, 'boost', 0, 'quadInOut', -1);
+
+    modManager.queueEase(1136, 1140, 'cosecantBopX', 5, 'sineOut', -1);
+
+    modManager.queueEase(1644, 1652, 'cosecantBopX', 0, 'sineOut', -1);
+    modManager.queueEase(1644, 1652, 'schmovinDrunkY', 1, 'sineOut', 0);
+    modManager.queueEase(1644, 1652, 'schmovinDrunkPeriod', -1, 'sineOut', -1);
+    modManager.queueEase(1644, 1652, 'schmovinDrunk', 0.5, 'sineOut', 1);
+    modManager.queueEase(1644, 1652, 'fieldPitch', -35, 'sineOut', 1);
+    modManager.queueEase(1644, 1652, 'fieldPitch', 35, 'sineOut', 0);
+
+    modManager.queueEase(1772, 1780, 'schmovinDrunkY', 0, 'sineOut', 0);
+    modManager.queueEase(1772, 1780, 'schmovinDrunk', 0.5, 'sineOut', 0);
+    modManager.queueEase(1772, 1780, 'schmovinDrunkY', 1, 'sineOut', 1);
+    modManager.queueEase(1772, 1780, 'schmovinDrunk', 0, 'sineOut', 1);
+    modManager.queueEase(1772, 1780, 'fieldPitch', 35, 'sineOut', 1);
+    modManager.queueEase(1772, 1780, 'fieldPitch', -35, 'sineOut', 0);
+
+    /*modManager.queueEase(1900, 1908, 'fieldYaw', -360, 'sineOut', 1);
+    modManager.queueEase(1900, 1908, 'fieldYaw', 360, 'sineOut', 0);*/
+    modManager.queueEase(1900, 1908, 'schmovinDrunkY', 0, 'sineOut', -1);
+    modManager.queueEase(1900, 1908, 'schmovinDrunkPeriod', -0.33, 'sineOut', -1);
+    modManager.queueEase(1900, 1908, 'schmovinDrunk', 0.5, 'sineOut', -1);
+    modManager.queueEase(1900, 1908, 'fieldPitch', 0, 'sineOut', -1);
+
+    if(!ClientPrefs.midScroll){
+        modManager.queueEase(1776, 1780, 'opponentSwap', 1, 'backInOut', -1);
+        modManager.queueEase(1904, 1908, 'opponentSwap', 0, 'backInOut', -1);
+    }
+
+
+    modManager.queueEase(2166, 2188, 'schmovinDrunk', 0, 'sineIn', -1);
+    modManager.queueEase(2166, 2188, 'localrotateY', 360*5, 'sineIn', -1);
+    modManager.queueEase(2166, 2188, 'fieldY', 360*3 * (ClientPrefs.downScroll ? 1 : -1), 'sineIn', -1);
+
+    modManager.queueEase(1908, 2164, 'localrotateX', -180, 'quadInOut', -1);
+}

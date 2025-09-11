@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TextureAtlas imagePath="defected.png" width="8192" height="1573">
+	<SubTexture name="defected left0004" x="1270" y="462" width="673" height="475" rotated="true" frameX="-97" frameY="-32" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0012" x="1944" y="462" width="673" height="475" rotated="true" frameX="-97" frameY="-32" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected idle0004" x="1936" y="1" width="667" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0005" x="2604" y="1" width="663" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0012" x="3268" y="1" width="661" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected left0008" x="4493" y="471" width="659" height="482" rotated="true" frameX="-97" frameY="-46" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected idle0000" x="614" y="462" width="655" height="474" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected down0004" x="640" y="1" width="648" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected idle0008" x="4563" y="1" width="647" height="469" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected down0012" x="1289" y="1" width="646" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected left0010" x="5153" y="472" width="643" height="488" rotated="true" frameX="-97" frameY="-62" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected right0004" x="3071" y="938" width="642" height="563" rotated="true" frameX="-112" frameY="-32" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected idle0002" x="5211" y="1" width="642" height="470" rotated="true" frameX="-115" frameY="-62" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected right0012" x="3714" y="952" width="641" height="563" rotated="true" frameX="-112" frameY="-32" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected left0002" x="5797" y="472" width="641" height="497" rotated="true" frameX="-88" frameY="-62" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected up0000" x="1" y="1" width="638" height="453" rotated="true" frameX="-121" frameY="-11" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected down0008" x="3930" y="1" width="632" height="469" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected idle0010" x="5854" y="1" width="631" height="470" rotated="true" frameX="-115" frameY="-62" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected right0008" x="4972" y="961" width="627" height="565" rotated="true" frameX="-110" frameY="-46" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected down0002" x="3867" y="471" width="625" height="480" rotated="true" frameX="-105" frameY="-62" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected left0006" x="614" y="937" width="624" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected up0012" x="3242" y="462" width="624" height="475" rotated="true" frameX="-112" frameY="-32" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0004" x="2618" y="462" width="623" height="475" rotated="true" frameX="-112" frameY="-32" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected left0000" x="1852" y="938" width="606" height="543" rotated="true" frameX="-36" frameY="-96" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected down0010" x="7097" y="1" width="616" height="472" rotated="true" frameX="-113" frameY="-62" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected right0002" x="4356" y="954" width="615" height="564" rotated="true" frameX="-115" frameY="-62" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected idle0006" x="7037" y="474" width="614" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected up0006" x="1239" y="938" width="612" height="521" rotated="true" frameX="-66" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected idle0007" x="1" y="928" width="612" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected up0008" x="7714" y="1" width="477" height="612" frameX="-110" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0010" x="1" y="455" width="612" height="472" rotated="true" frameX="-115" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected right0010" x="2459" y="938" width="611" height="560" rotated="true" frameX="-115" frameY="-62" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected up0002" x="6486" y="1" width="610" height="471" rotated="true" frameX="-115" frameY="-41" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected right0006" x="6197" y="980" width="609" height="592" frameX="-66" frameY="-81" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected down0006" x="6439" y="473" width="597" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected right0000" x="5600" y="970" width="596" height="591" rotated="true" frameX="-110" frameY="-68" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected down0000" x="7652" y="614" width="514" height="585" frameX="-58" frameY="-113" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0001" x="7652" y="614" width="514" height="585" frameX="-58" frameY="-113" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0003" x="3867" y="471" width="625" height="480" rotated="true" frameX="-105" frameY="-62" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0005" x="640" y="1" width="648" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0007" x="6439" y="473" width="597" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0014" x="6439" y="473" width="597" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0015" x="6439" y="473" width="597" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0009" x="3930" y="1" width="632" height="469" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0011" x="7097" y="1" width="616" height="472" rotated="true" frameX="-113" frameY="-62" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected down0013" x="1289" y="1" width="646" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="708"/>
+	<SubTexture name="defected idle0001" x="614" y="462" width="655" height="474" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0003" x="5211" y="1" width="642" height="470" rotated="true" frameX="-115" frameY="-62" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0014" x="1" y="928" width="612" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0015" x="1" y="928" width="612" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0022" x="1" y="928" width="612" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0023" x="1" y="928" width="612" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0009" x="4563" y="1" width="647" height="469" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0016" x="4563" y="1" width="647" height="469" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0017" x="4563" y="1" width="647" height="469" rotated="true" frameX="-110" frameY="-46" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0011" x="5854" y="1" width="631" height="470" rotated="true" frameX="-115" frameY="-62" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0018" x="5854" y="1" width="631" height="470" rotated="true" frameX="-115" frameY="-62" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0019" x="5854" y="1" width="631" height="470" rotated="true" frameX="-115" frameY="-62" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0013" x="3268" y="1" width="661" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0020" x="3268" y="1" width="661" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected idle0021" x="3268" y="1" width="661" height="460" rotated="true" frameX="-112" frameY="-32" frameWidth="595" frameHeight="714"/>
+	<SubTexture name="defected left0001" x="1852" y="938" width="606" height="543" rotated="true" frameX="-36" frameY="-96" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0003" x="5797" y="472" width="641" height="497" rotated="true" frameX="-88" frameY="-62" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0005" x="1270" y="462" width="673" height="475" rotated="true" frameX="-97" frameY="-32" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0007" x="614" y="937" width="624" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0014" x="614" y="937" width="624" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0015" x="614" y="937" width="624" height="506" rotated="true" frameX="-66" frameY="-81" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0009" x="4493" y="471" width="659" height="482" rotated="true" frameX="-97" frameY="-46" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0011" x="5153" y="472" width="643" height="488" rotated="true" frameX="-97" frameY="-62" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected left0013" x="1944" y="462" width="673" height="475" rotated="true" frameX="-97" frameY="-32" frameWidth="595" frameHeight="715"/>
+	<SubTexture name="defected right0001" x="5600" y="970" width="596" height="591" rotated="true" frameX="-110" frameY="-68" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0003" x="4356" y="954" width="615" height="564" rotated="true" frameX="-115" frameY="-62" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0005" x="3071" y="938" width="642" height="563" rotated="true" frameX="-112" frameY="-32" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0007" x="6197" y="980" width="609" height="592" frameX="-66" frameY="-81" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0014" x="6197" y="980" width="609" height="592" frameX="-66" frameY="-81" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0015" x="6197" y="980" width="609" height="592" frameX="-66" frameY="-81" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0009" x="4972" y="961" width="627" height="565" rotated="true" frameX="-110" frameY="-46" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0011" x="2459" y="938" width="611" height="560" rotated="true" frameX="-115" frameY="-62" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected right0013" x="3714" y="952" width="641" height="563" rotated="true" frameX="-112" frameY="-32" frameWidth="711" frameHeight="687"/>
+	<SubTexture name="defected up0001" x="1" y="1" width="638" height="453" rotated="true" frameX="-121" frameY="-11" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0003" x="6486" y="1" width="610" height="471" rotated="true" frameX="-115" frameY="-41" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0005" x="2618" y="462" width="623" height="475" rotated="true" frameX="-112" frameY="-32" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0007" x="1239" y="938" width="612" height="521" rotated="true" frameX="-66" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0014" x="1239" y="938" width="612" height="521" rotated="true" frameX="-66" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0015" x="1239" y="938" width="612" height="521" rotated="true" frameX="-66" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0009" x="7714" y="1" width="477" height="612" frameX="-110" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0011" x="1" y="455" width="612" height="472" rotated="true" frameX="-115" frameY="-44" frameWidth="597" frameHeight="666"/>
+	<SubTexture name="defected up0013" x="3242" y="462" width="624" height="475" rotated="true" frameX="-112" frameY="-32" frameWidth="597" frameHeight="666"/>
+</TextureAtlas>

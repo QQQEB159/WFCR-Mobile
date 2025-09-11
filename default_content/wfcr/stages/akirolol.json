@@ -1,0 +1,22 @@
+{
+	"opponent": [65, -160],
+	"girlfriend": [325, -50],
+	"boyfriend": [730, -150],
+	
+	"hide_girlfriend": false,
+	
+	"defaultZoom": 0.5,
+
+	"camera_stage": [550, 200],
+	
+	"camera_speed": 1,
+	"camera_opponent": [0,-15],
+	"camera_girlfriend": [0,0],
+	"camera_boyfriend": [160,-200],
+
+	"bg_color": "0xFFFFFFFF",
+
+	"directory": "",
+	"preload": [],
+	"preloadStrings": null
+}

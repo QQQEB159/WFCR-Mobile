@@ -1,0 +1,25 @@
+function onLoad(){
+    var cvalcor0005:FlxSprite = new FlxSprite(-1350, -850).loadGraphic(Paths.image("cvalcor0005"));
+    cvalcor0005.scrollFactor.set(0.2, 0.2);
+    cvalcor0005.scale.set(1.5, 1.5);
+    stage.add(cvalcor0005);
+
+    var cvalcor0004:FlxSprite = new FlxSprite(-1400, -850).loadGraphic(Paths.image("cvalcor0004"));
+    cvalcor0004.scale.set(1.5, 1.5);
+    cvalcor0004.scrollFactor.set(0.4, 0.4);
+    stage.add(cvalcor0004);
+
+    var cvalcor0003:FlxSprite = new FlxSprite(-1200, -700).loadGraphic(Paths.image("cvalcor0003"));
+    cvalcor0003.scale.set(1.5, 1.5);
+    cvalcor0003.scrollFactor.set(0.45, 0.45);
+    stage.add(cvalcor0003);
+
+    var cvalcor0002:FlxSprite = new FlxSprite(-1500, -850).loadGraphic(Paths.image("cvalcor0002"));
+    cvalcor0002.scale.set(1.5, 1.5);
+    cvalcor0002.scrollFactor.set(0.8, 0.8);
+    stage.add(cvalcor0002);
+
+    var cvalcor0001:FlxSprite = new FlxSprite(-1500, -850).loadGraphic(Paths.image("cvalcor0001"));
+    cvalcor0001.scale.set(1.5, 1.5);
+    stage.add(cvalcor0001);
+}

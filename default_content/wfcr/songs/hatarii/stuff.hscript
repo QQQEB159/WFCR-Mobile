@@ -1,0 +1,28 @@
+importClass("funkin.objects.Character");
+importClass("funkin.objects.hud.HealthIcon");
+
+var extraCharacter:Character = new Character(300, 250, 'cakiro');
+
+var extraIcon:HealthIcon = new HealthIcon('cakiro_alt');
+
+function onCreatePost(){
+    extraCharacter.setupCharacter();
+    extraCharacter.antialiasing = ClientPrefs.globalAntialiasing;
+    game.addBehindDad(extraCharacter);
+    game.dadField.characters.push(extraCharacter);
+    game.dad.ignoreNoteTypes.push("extra character sing");
+    extraCharacter.ignoreNoteTypes.push("0");
+    game.dad.x -= 200;
+    game.hud.add(extraIcon);
+    extraIcon.x = game.hud.iconP2.x - 175;
+    extraIcon.y = game.hud.iconP2.y - 45;
+    extraIcon.shader = game.hud.iconP2.shader;
+    game.hud.iconP2.x -= 75;
+    game.hud.iconP2.y += 15;
+}
+function onUpdatePost(){
+    extraIcon.scale.x = extraIcon.scale.y = game.hud.iconP2.scale.y;
+    extraIcon.relativePercent = 100 - game.health * 50;
+    extraIcon.visible =  game.hud.iconP2.visible;
+    extraIcon.alpha =  game.hud.iconP2.alpha;
+}

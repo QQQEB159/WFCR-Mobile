@@ -1,0 +1,57 @@
+var corruption20003:FlxSprite;
+var corruption20001:FlxSprite;
+
+function onLoad(){
+    var corruption20005:FlxSprite = new FlxSprite(-800, -350, Paths.image("corruption20005"));
+    corruption20005.scrollFactor.set(0.3, 0.3);
+    stage.add(corruption20005);
+
+    var corruption20004:FlxSprite = new FlxSprite(-600, -350, Paths.image("corruption20004"));
+    corruption20004.scrollFactor.set(0.35, 0.35);
+    stage.add(corruption20004);
+
+    corruption20001 = new FlxSprite(-300, -150, Paths.image("corruption20001"));
+    corruption20001.scrollFactor.set(0.4, 0.4);
+    stage.add(corruption20001);
+
+    corruption20003 = new FlxSprite(-750, -350, Paths.image("corruption20003"));
+    corruption20003.scrollFactor.set(0.8, 0.8);
+    stage.add(corruption20003);
+
+    var corruption20002:FlxSprite = new FlxSprite(-700, -350, Paths.image("corruption20002"));
+    stage.add(corruption20002);
+
+    if(Std.isOfType(FlxG.state,PlayState)){
+        game.gf.scale.set(0.6, 0.6);
+        game.gf.scrollFactor.set(0.4, 0.4);
+    }
+}
+var iTime:Float = 0.0;
+var doTheShit:Bool = true;
+function onUpdatePost(elapsed:Float){
+    iTime += elapsed;
+    if(!doTheShit) return;
+    corruption20001.y = (Math.sin(iTime*(Conductor.bpm/220) *0.8) * 100) - 800;
+    corruption20001.x = FlxMath.lerp(corruption20001.x, -300 -Math.sin(Conductor.curStep / 9.5 / 4 * iTime / 10) * 200, elapsed);
+    corruption20003.y = (Math.sin(iTime*(Conductor.bpm/220) *1.2) * Math.PI / 2 * 110) - 400;
+    if(Std.isOfType(FlxG.state,PlayState)){
+        game.gf.x = corruption20001.x + game.gf.width + 500;
+        game.gf.y = corruption20001.y + 325;
+    }
+}
+
+function onEvent(name, v1, v2){
+    if(name.toLowerCase() == "change stage"){
+        if(v1 == "phase2"){
+            game.gf.scale.set(0.6, 0.6);
+            game.gf.scrollFactor.set(0.4, 0.4);
+        }
+        else{
+            game.gf.scale.set(1, 1);
+            game.gf.scrollFactor.set(0.95, 0.95);
+            game.gf.x = 700;
+            game.gf.y = -275;
+        }
+        doTheShit = !doTheShit;
+    }
+}

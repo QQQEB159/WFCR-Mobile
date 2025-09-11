@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="ROLL_assets.png">
+	<!-- Created with Adobe Flash CS6 version 12.0.0.481 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="roll end0000" x="0" y="50" width="50" height="30"/>
+	<SubTexture name="roll piece0000" x="0" y="0" width="50" height="50"/>
+</TextureAtlas>

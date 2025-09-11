@@ -1,0 +1,81 @@
+{
+	"song": {
+		"events": [
+			[
+				72000,
+				[
+					[
+						"toggle default notes",
+						"",
+						""
+					],
+					[
+						"Change Character",
+						"dad",
+						"mattc"
+					],
+					[
+						"Change Character",
+						"bf",
+						"bfmii"
+					],
+					[
+						"Game Flash",
+						"",
+						""
+					],
+					[
+						"Change Stage",
+						"old",
+						""
+					],
+					[
+						"Set Property",
+						"gf.visible",
+						"false"
+					]
+				]
+			],
+			[
+				96000,
+				[
+					[
+						"Change Character",
+						"dad",
+						"corruptedmatt"
+					],
+					[
+						"Change Character",
+						"bf",
+						"bf"
+					],
+					[
+						"toggle default notes",
+						"",
+						""
+					],
+					[
+						"Game Flash",
+						"",
+						""
+					],
+					[
+						"Set Property",
+						"gf.visible",
+						"true"
+					],
+					[
+						"Change Focus",
+						"dad",
+						""
+					],
+					[
+						"Change Stage",
+						"sportingidklol",
+						""
+					]
+				]
+			]
+		]
+	}
+}

@@ -1,0 +1,53 @@
+importClass("funkin.CoolerStringTools");
+
+var credit:FlxSprite;
+var text:FlxText;
+
+function getShaderFrag(file:String):String{
+    return File.getContent('content/wfcr/shaders/'+file+'.frag');
+}
+
+var shader:CustomShader = new CustomShader(getShaderFrag('HSVEffect'));
+
+function onCreatePost(){
+    credit = new FlxSprite(0, 0);
+    credit.loadGraphic(Paths.image("corruption_tab"));
+    credit.camera = game.camOther;
+    credit.antialiasing = ClientPrefs.globalAntialiasing;
+    if(!ClientPrefs.downScroll){
+        credit.y = FlxG.height - credit.height;
+    }
+    credit.x = -credit.width;
+    game.add(credit);
+
+    text = new FlxText();
+    var metadata:Dynamic = game.metadata;
+    text.text = CoolerStringTools.capitalize(StringTools.replace(PlayState.SONG.song.toLowerCase(), '-', ' ')) + '\nComposer: '+metadata.artist+'\nCharter: ' + metadata.charter;
+    text.camera = game.camOther;
+    text.antialiasing = ClientPrefs.globalAntialiasing;
+    text.y = credit.y + 25;
+    text.x = credit.x;
+    text.setFormat(Paths.font("droidbold.ttf"), 30, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK);
+    text.borderSize = 1.25;
+    game.add(text);
+    if(ClientPrefs.shaders != 'None' && PlayState.SONG.song.toLowerCase() == "reborn"){
+
+        shader.setFloat("hue", -0.25);
+        credit.shader = shader;
+    }
+}
+
+function onSongStart(){ 
+    FlxTween.tween(credit, {x:0}, 0.5, {ease: FlxEase.quintOut, onComplete: () -> {
+        FlxTween.tween(credit, {x:-credit.width}, 0.5, {ease: FlxEase.quintOut, startDelay:3, onComplete: () ->{
+            game.remove(credit);
+            credit.destroy();
+        }});
+    }});
+    FlxTween.tween(text, {x:0}, 0.5, {ease: FlxEase.quintOut, onComplete: () -> {
+        FlxTween.tween(text, {x:-credit.width}, 0.5, {ease: FlxEase.quintOut, startDelay:3, onComplete: () ->{
+            game.remove(text);
+            text.destroy();
+        }});
+    }});
+}

@@ -1,0 +1,21 @@
+function onLoad(){
+    var tommy0003:FlxSprite = new FlxSprite().loadGraphic(Paths.image("tommy0003"));
+    tommy0003.scrollFactor.set(1/3, 1/3);
+    tommy0003.scale.set(1.5, 1.5);
+    tommy0003.screenCenter();
+    tommy0003.y -= 375;
+    stage.add(tommy0003);
+
+    var tommy0002:FlxSprite = new FlxSprite().loadGraphic(Paths.image("tommy0002"));
+    tommy0002.scrollFactor.set(2/3, 2/3);
+    tommy0002.scale.set(1.5, 1.5);
+    tommy0002.screenCenter();
+    tommy0002.x += 80;
+    tommy0002.y -= 250;
+    stage.add(tommy0002);
+
+    var tommy0001:FlxSprite = new FlxSprite().loadGraphic(Paths.image("tommy0001"));
+    tommy0001.scale.set(1.5, 1.5);
+    tommy0001.screenCenter();
+    stage.add(tommy0001);
+}

@@ -1,0 +1,37 @@
+var rock3:FlxSprite;
+var rock1:FlxSprite;
+var rock2:FlxSprite;
+
+function onLoad(){
+    var sky:FlxSprite = new FlxSprite(-770, -380);
+    sky.frames = Paths.getSparrowAtlas("6the sky");
+    sky.animation.addByPrefix("6the sky", "6the sky", 4, true);
+    sky.scrollFactor.set(0.4, 0.4);
+    sky.animation.play("6the sky", true, false, 0);
+    stage.add(sky);
+
+    var punkbeams:FlxSprite = new FlxSprite(-775, -365, Paths.image("5spunkbeams"));
+    punkbeams.scrollFactor.set(0.6, 0.6);
+    stage.add(punkbeams);
+
+    rock3 = new FlxSprite(-1195, -375, Paths.image("4rock3"));
+    rock3.scrollFactor.set(0.8, 0.8);
+    stage.add(rock3);
+
+    rock2 = new FlxSprite(-775, -375, Paths.image("3rock2"));
+    rock2.scrollFactor.set(0.8, 0.8);
+    stage.add(rock2);
+
+    rock1 = new FlxSprite(-770, -375, Paths.image("2rock1"));
+    rock1.scrollFactor.set(0.8, 0.8);
+    stage.add(rock1);
+
+    stage.add(new FlxSprite(-770, -375 + 454, Paths.image("1stage")));
+}
+var iTime:Float = 0.0;
+function onUpdate(elapsed:Float){
+    iTime += elapsed;
+    rock3.y = (Math.sin(iTime*(Conductor.bpm/220) *0.9) * 100) - 450;
+    rock2.y = (Math.cos(iTime*(Conductor.bpm/220)) * 100) - 375;
+    rock1.y = (Math.sin(iTime*(Conductor.bpm/220) *1.1) * Math.PI / 2 * 100) - 400;
+}

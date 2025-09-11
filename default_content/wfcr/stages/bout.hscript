@@ -1,0 +1,20 @@
+function onLoad(){
+    var boutcorrupt0003:FlxSprite = new FlxSprite().loadGraphic(Paths.image("boutcorrupt0003"));
+    boutcorrupt0003.scrollFactor.set(0.95, 0.95);
+    boutcorrupt0003.scale.set(1.5, 1.5);
+    boutcorrupt0003.screenCenter();
+    stage.add(boutcorrupt0003);
+
+    var boutcorrupt0002:FlxSprite = new FlxSprite().loadGraphic(Paths.image("boutcorrupt0002"));
+    boutcorrupt0002.scale.set(1.5, 1.5);
+    boutcorrupt0002.screenCenter();
+    stage.add(boutcorrupt0002);
+
+    var boutcorrupt0001:FlxSprite = new FlxSprite().loadGraphic(Paths.image("boutcorrupt0001"));
+    boutcorrupt0001.scale.set(1.5, 1.5);
+    boutcorrupt0003.scrollFactor.set(1.05, 1.05);
+    boutcorrupt0003.screenCenter();
+    stage.foreground.add(boutcorrupt0001);
+    boutcorrupt0001.x -= 500;
+    boutcorrupt0001.y -= 300;
+}

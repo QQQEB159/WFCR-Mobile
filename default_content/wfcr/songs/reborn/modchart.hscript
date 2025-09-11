@@ -1,0 +1,37 @@
+function generateModchart(){
+    modManager.queueEaseL(64, 6, "fieldYaw", 0, "cubeOut", -1, 35);
+    modManager.queueEaseL(80, 6, "fieldYaw", 0, "cubeOut", -1, -35);
+    modManager.queueEaseL(88, 6, "fieldYaw", 0, "cubeOut", -1, 35);
+    modManager.queueEaseL(96, 6, "fieldYaw", 0, "cubeOut", -1, -35);
+    modManager.queueEaseL(112, 6, "fieldYaw", 0, "cubeOut", -1, 35);
+    modManager.queueEaseL(120, 6, "fieldYaw", 0, "cubeOut", -1, -35);
+    if(!ClientPrefs.midScroll){
+        modManager.queueEase(528, 544, "opponentSwap", 0.5, "sineOut", -1);
+        modManager.queueEase(528, 544, "alpha", 1, "sineOut", 1);
+        modManager.queueEase(672, 720, "opponentSwap", 0, "sineOut", -1);
+        modManager.queueEase(672, 720, "alpha", 0, "sineOut", 1);
+    }
+
+    for(i in 136...168){
+        modManager.queueEaseLB(i, 1, "fieldYaw", 0, "sineOut", -1, i%2==0?45:-45);
+        for(j in 0...PlayState.keyCount){
+            modManager.queueEaseLB(i, 1, "confusionOffset"+j, 0, "sineOut", -1, (i%2==0?-1:1)*(j%2==0?35:-35));
+        }
+        modManager.queueEaseLB(i, 1, "tiny", 0, "sineOut", -1/3, -1);
+    }
+
+    if(!ClientPrefs.midScroll){
+        modManager.queueEase(1136, 1152, "opponentSwap", 0.5, "sineOut", -1);
+        modManager.queueEase(1136, 1152, "alpha", 1, "sineOut", 1);
+        modManager.queueEase(1280, 1296, "opponentSwap", 0, "sineOut", -1);
+        modManager.queueEase(1280, 1296, "alpha", 0, "sineOut", 1);
+    }
+
+    for(i in 288...320){
+        modManager.queueEaseLB(i, 1, "fieldYaw", 0, "sineOut", -1, i%2==0?45:-45);
+        for(j in 0...PlayState.keyCount){
+            modManager.queueEaseLB(i, 1, "confusionOffset"+j, 0, "sineOut", -1, (i%2==0?-1:1)*(j%2==0?35:-35));
+        }
+        modManager.queueEaseLB(i, 1, "tiny", 0, "sineOut", -1/3, -1);
+    }
+}

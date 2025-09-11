@@ -1,0 +1,16 @@
+function onCreatePost(){
+    if(ClientPrefs.shaders != 'None' && PlayState.SONG.song.toLowerCase() == "reborn"){
+        for(character in [game.dad, game.boyfriend, game.gf]){
+            var rim = new DropShadowShader();
+            rim.setAdjustColor(-46, -38, -25, -20);
+            rim.color = 0xFF5D00FF;
+            character.shader = rim;
+            rim.attachedSprite = character;
+            rim.angle = 90;
+
+            character.animation.callback = (function() {
+                rim.updateFrameInfo(character.frame);
+            });
+        }
+    }
+}

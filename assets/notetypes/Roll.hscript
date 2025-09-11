@@ -1,0 +1,28 @@
+function setupNote(note:Note){
+    note.maxReleaseTime = 0.5;
+    note.isRoll = true;
+    if(note.isSustainNote){
+        note.texture = 'QUANTROLL_assets';
+    }
+}
+
+function loadNoteAnims(note){
+    var prefix = Note.colArray[note.column];
+    
+	var animName = '';
+		if(note.holdType == 1)
+			animName = 'roll piece';
+		else if(note.holdType == 2)
+			animName = 'roll end';
+		
+        note.animation.addByPrefix(prefix + 'holdend', 'roll end');
+	note.animation.addByPrefix('default', animName);
+	note.animation.play('default', true);
+    note.scale.set(1.5, 0.7);
+	note.updateHitbox();
+
+}
+
+function onHoldPress(note, field){
+    note.tripProgress = 1;
+}

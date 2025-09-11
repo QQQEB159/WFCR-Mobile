@@ -1,0 +1,133 @@
+
+function onModifierRegisterPost() {
+    modManager.registerAux("noteBounce");
+    modManager.quickNode(['noteBounce'], function(inputs, pN){
+        var beat:Float = (curDecBeat - curBeat);
+        var bounce:Float = Math.abs(FlxMath.fastSin(beat*3.3));
+        return [
+            inputs[0] * -bounce / 2//,
+            //inputs[0] * -bounce / 2        
+        ];
+    }, ['moveY'/*, 'scaleX'*/]);
+
+    modManager.registerAux("noteFlash");
+    modManager.quickNode(['noteFlash'], function(inputs, pN){
+        var beat:Float = (curDecBeat - curBeat);
+        var flash:Float = (FlxMath.fastSin(beat / 3.3) / 2) +0.5;
+        return [
+            (inputs[0]) * (flash)
+        ];
+    }, ['stealth']); 
+}
+
+
+function generateModchart(){
+    modManager.queueSet(-16, "schmovinDrunkZPeriod", -0.33, -1);
+    modManager.queueSet(-16, "dark", 1, -1);
+    modManager.queueSet(-16, "sudden", 1/3, -1);
+    modManager.queueSet(-16, "boost", 0.6, -1);
+    modManager.queueSet(-16, "drunk", 1, -1);
+    modManager.queueSet(-16, "drunkPeriod", -0.66, -1);
+    modManager.queueSet(-16, "drunkZ", 1, -1);
+    modManager.queueSet(-16, "drunkZPeriod", -0.66, -1);
+    modManager.queueSet(-16, "drunkZOffset", Math.PI*2, -1);
+
+    modManager.queueEaseB(16, 17, "dark", 0, "sineOut", 1);
+
+    modManager.queueEaseB(24, 25, "dark", 0, "sineOut", 0);
+
+
+    modManager.queueSet(263, "alpha", 1, -1);
+    modManager.queueSet(264, "alpha", 0, -1);
+    modManager.queueSet(265, "alpha", 1, -1);
+    modManager.queueSet(266, "alpha", 0, -1);
+
+    modManager.queueEaseB(46, 50, "sudden", 0, "sineOut", -1);
+    modManager.queueEaseB(46, 50, "drunk", 0, "sineOut", -1);
+    modManager.queueEaseB(46, 50, "drunkZ", 0, "sineOut", -1);
+    modManager.queueEaseB(46, 50, "noteBounce", 1, "sineOut", -1);
+    modManager.queueEaseB(46, 50, "boost", 0, "sineOut", -1);
+    modManager.queueEaseB(112, 114, "noteBounce", 0, "sineOut", -1);
+    //modManager.queueEaseB(112, 114, "noteFlash", 1, "sineOut", -1);
+
+    var i:Int = 1;
+    for(b in 146...243){
+		modManager.queueEaseLB(b, 1, 'schmovinTipsyX', 0, 'circOut', -1, i*1.5);
+        //modManager.queueEaseLB(b, 1, 'schmovinTipsy', 0, 'circOut', -1, i*1);
+        modManager.queueEaseLB(b, 1, 'schmovinDrunkZ', 0, 'circOut', -1, i*5);
+		i *= -1;
+	}
+
+    modManager.queueEaseB(179, 181, "fieldZ", 360, "sineOut", 0);
+    modManager.queueEaseB(179, 181, "alpha", 0.5, "sineOut", 0);
+
+
+
+    modManager.queueEaseB(193, 195, "fieldZ", 0, "sineOut", 0);
+    modManager.queueEaseB(193, 195, "alpha", 0, "sineOut", 0);
+    modManager.queueEaseB(193, 195, "fieldZ", 360, "sineOut", 1);
+    modManager.queueEaseB(193, 195, "alpha", 0.5, "sineOut", 1);
+
+
+    modManager.queueEaseB(211, 213, "fieldZ", 360, "sineOut", 0);
+    modManager.queueEaseB(211, 213, "alpha", 0.5, "sineOut", 0);
+    modManager.queueEaseB(211, 213, "fieldZ", 0, "sineOut", 1);
+    modManager.queueEaseB(211, 213, "alpha", 0, "sineOut", 1);
+
+
+    modManager.queueEaseB(225, 227, "fieldZ", 0, "sineOut", 0);
+    modManager.queueEaseB(225, 227, "alpha", 0, "sineOut", 0);
+    modManager.queueEaseB(225, 227, "fieldZ", 360, "sineOut", 1);
+    modManager.queueEaseB(225, 227, "alpha", 0.5, "sineOut", 1);
+
+
+    modManager.queueEaseB(243, 245, "fieldZ", 0, "sineOut", -1);
+    modManager.queueEaseB(243, 245, "alpha", 0, "sineOut", -1);
+
+    /*modManager.queueEase(1100, 1103, "reverse", 1/6, "sineOut", -1);
+    modManager.queueEase(1103, 1106, "reverse", 2/6, "sineOut", -1);
+    modManager.queueEase(1106, 1108, "reverse", 3/6, "sineOut", -1);
+    modManager.queueEase(1108, 1111, "reverse", 4/6, "sineOut", -1);
+    modManager.queueEase(1111, 1114, "reverse", 5/6, "sineOut", -1);
+    modManager.queueEase(1114, 1116, "reverse", 6/6, "sineOut", -1);
+
+
+    modManager.queueEase(1132, 1135, "reverse", 5/6, "sineOut", -1);
+    modManager.queueEase(1135, 1138, "reverse", 4/6, "sineOut", -1);
+    modManager.queueEase(1138, 1140, "reverse", 3/6, "sineOut", -1);
+    modManager.queueEase(1140, 1143, "reverse", 2/6, "sineOut", -1);
+    modManager.queueEase(1143, 1146, "reverse", 1/6, "sineOut", -1);
+    modManager.queueEase(1146, 1147, "reverse", 0/6, "sineOut", -1);*/
+
+
+    modManager.queueEaseB(309, 341, "brake", 1/3, "linear", -1);
+
+    modManager.queueEase(1540, 1548, "transform0Z", 640, "cubeIn", 1);
+    modManager.queueEase(1540, 1548, "confusionOffset0", 360, "cubeIn", 1);
+
+
+    modManager.queueEase(1556, 1556+8, "transform1Z", 640, "cubeIn", 1);
+    modManager.queueEase(1556, 1556+8, "confusionOffset1", 360, "cubeIn", 1);
+
+    modManager.queueEase(1564, 1564+8, "transform2Z", 640, "cubeIn", 1);
+    modManager.queueEase(1564, 1564+8, "confusionOffset2", 360, "cubeIn", 1);
+
+
+    modManager.queueEase(1572, 1572+8, "transform3Z", 640, "cubeIn", 1);
+    modManager.queueEase(1572, 1572+8, "confusionOffset3", 360, "cubeIn", 1);
+
+
+    modManager.queueEase(1588, 1588+8, "transform0Z", 640, "cubeIn",0);
+    modManager.queueEase(1588, 1588+8, "confusionOffset0", 360, "cubeIn", 0);
+
+
+    modManager.queueEase(1604, 1604+8, "transform1Z", 640, "cubeIn",0);
+    modManager.queueEase(1604, 1604+8, "confusionOffset1", 360, "cubeIn", 0);
+
+
+    modManager.queueEase(1620, 1620+8, "transform2Z", 640, "cubeIn",0);
+    modManager.queueEase(1620, 1620+8, "confusionOffset2", 360, "cubeIn", 0);
+
+    modManager.queueEase(1628, 1628+8, "transform3Z", 640, "cubeIn",0);
+    modManager.queueEase(1628, 1628+8, "confusionOffset3", 360, "cubeIn", 0);
+}

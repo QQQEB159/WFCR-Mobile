@@ -1,0 +1,69 @@
+
+function onLoad(){
+    var gradient:FlxSprite = new FlxSprite(-600,-235, Paths.image("old/gradient"));
+    gradient.scrollFactor.set(0.2, 0.2);
+    stage.add(gradient);
+
+    var beam:FlxSprite = new FlxSprite(100,-550);
+    beam.scrollFactor.set(0.2, 0.2);
+    beam.frames = Paths.getSparrowAtlas("old/bglineart");
+    beam.animation.addByPrefix('dance','da beam',35,true);
+    beam.animation.play('dance');
+    stage.add(beam);
+
+    var bob:FlxSprite = new FlxSprite(200,80, Paths.image("old/bob"));
+    bob.scrollFactor.set(0.2, 0.2);
+    stage.add(bob);
+
+    var bop:FlxSprite = new FlxSprite(200,80, Paths.image("old/obeepbop"));
+    bop.scrollFactor.set(0.2, 0.2);
+    stage.add(bop);
+
+    var rb1:FlxSprite = new FlxSprite(500,180, Paths.image("old/rock1"));
+    rb1.scrollFactor.set(0.3, 0.3);
+    stage.add(rb1);
+
+    var rb2:FlxSprite = new FlxSprite(540,280, Paths.image("old/rock2"));
+    rb2.scrollFactor.set(0.3, 0.3);
+    stage.add(rb2);
+
+    var rb3:FlxSprite = new FlxSprite(520,250, Paths.image("old/rock3"));
+    rb3.scrollFactor.set(0.3, 0.3);
+    stage.add(rb3);
+
+    var sta2:FlxSprite = new FlxSprite(1250,-110, Paths.image("old/stadium2"));
+    sta2.scrollFactor.set(0.25, 0.25);
+    stage.add(sta2);
+
+    var sta3:FlxSprite = new FlxSprite(-65,120, Paths.image("old/stadium3"));
+    sta3.scrollFactor.set(0.3, 0.3);
+    stage.add(sta3);
+
+    var rocksLeft:FlxSprite = new FlxSprite(-200,-100, Paths.image("old/rockdebrisleft"));
+    rocksLeft.scrollFactor.set(0.4, 0.4);
+    stage.add(rocksLeft);
+
+    var theRocks:FlxSprite = new FlxSprite(-600,-235, Paths.image("old/rocksbg"));
+    theRocks.scrollFactor.set(0.5, 0.5);
+    stage.add(theRocks);
+
+    var rocksRight:FlxSprite = new FlxSprite(1300,250, Paths.image("old/rockdebrisright"));
+    rocksRight.scrollFactor.set(0.6, 0.6);
+    stage.add(rocksRight);
+
+    var sta1:FlxSprite = new FlxSprite(-750,80, Paths.image("old/stadium1"));
+    sta1.scrollFactor.set(0.6, 0.6);
+    stage.add(sta1);
+
+    var thePlatform:FlxSprite = new FlxSprite(-670,-100, Paths.image("old/platform"));
+    thePlatform.scrollFactor.set(0.7, 0.7);
+    stage.add(thePlatform);
+
+    var tricky:FlxSprite = new FlxSprite(1000,0, Paths.image("old/tricky"));
+    tricky.scrollFactor.set(0.2, 0.2);
+    stage.add(tricky);
+
+    var eteled:FlxSprite = new FlxSprite(1120,85, Paths.image("old/eteled"));
+    eteled.scrollFactor.set(0.2, 0.2);
+    stage.add(eteled);
+}

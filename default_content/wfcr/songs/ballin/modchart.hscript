@@ -1,0 +1,90 @@
+importClass("funkin.modchart.modifiers.optional.WiggleModifier");
+
+function onModifierRegisterPost() {
+    modManager.quickRegister(new WiggleModifier(modManager));
+	modManager.registerAux("spinaround");
+	modManager.quickNode(["spinaround"], function(vals, pn) {
+		return [0.5 - 0.5 * Math.cos(vals[0] * (Math.PI/180)) - (ClientPrefs.midScroll ? 0.5 : 0)];
+	}, ["opponentSwap"]);
+
+    modManager.registerAux("sinerotate");
+	modManager.quickNode(["sinerotate"], function(vals, pn) {
+		return [5 * Math.sin(vals[0])];
+	}, ["fieldRoll"]);
+}
+
+function onBeatHit(){
+	if(curBeat == 96 || curBeat == 256){
+		game.ratingGroup.visible = false;
+	}
+	if(curBeat == 160 || curBeat == 230){
+		game.ratingGroup.visible = true;
+	}
+}
+
+
+function generateModchart()
+{
+	var modMgr = game.modManager;
+	var qEase = modMgr.queueEase;
+	var qSet = modMgr.queueSet;
+    modMgr.queueEase(384, 388, "fieldZ", 240, FlxEase.cubeOut, 1);
+    modMgr.queueEase(384, 388, "alpha", 0.75, FlxEase.cubeOut, 1);
+    modMgr.queueEase(384, 640, "sinerotate", (Math.PI * 20), FlxEase.linear, -1);
+    modMgr.queueEase(384, 640, "spinaround", 360*8, FlxEase.linear, -1);
+
+    modMgr.queueEase(448, 452, "fieldZ", 0, FlxEase.cubeOut, 1);
+    modMgr.queueEase(448, 452, "fieldZ", 240, FlxEase.cubeOut, 0);
+
+	modMgr.queueEase(576, 580, "fieldZ", 240, FlxEase.lcubeOutinear, 1);
+    modMgr.queueEase(576, 580, "alpha", 0.5, FlxEase.cubeOut, 1);
+	modMgr.queueEase(576, 580, "fieldZ", 0, FlxEase.cubeOut, 0);
+    modMgr.queueEase(576, 580, "alpha", 0, FlxEase.cubeOut, 0);
+
+    modMgr.queueEase(640, 644, "fieldZ", 0, FlxEase.cubeOut, -1);
+    modMgr.queueEase(640, 644, "alpha", 0, FlxEase.cubeOut, -1);
+    modMgr.queueSet(640, "sinerotate", 0, -1);
+
+    var i = 1;
+	for(b in 96...160){
+		if(b % 2 == 0){
+			modManager.queueEaseLB(b - 0.2, 0.2, 'wiggle', -0.35 * i, 'cubeIn', -1);
+			modManager.queueEaseLB(b, 1, 'wiggle', 0, 'cubeOut',  -1);
+
+            modManager.queueEaseLB(b - 0.2, 0.2, 'localrotateY', 35 * i, 'cubeIn', -1);
+			modManager.queueEaseLB(b, 1, 'localrotateY', 0, 'cubeOut', -1);
+			i *= -1;
+		}
+	}
+
+ 	modMgr.queueSet(1024, "spinaround", 0, -1);
+	modMgr.queueEase(1024, 1028, "fieldZ", 240, FlxEase.cubeOut, 1);
+    modMgr.queueEase(1024, 1028, "alpha", 0.75, FlxEase.cubeOut, 1);
+    modMgr.queueEase(1024, 1280, "sinerotate", (Math.PI * 20), FlxEase.linear, -1);
+    modMgr.queueEase(1024, 1280, "spinaround", 360*8, FlxEase.linear, -1);
+
+    modMgr.queueEase(448+640, 452+640, "fieldZ", 0, FlxEase.cubeOut, 1);
+    modMgr.queueEase(448+640, 452+640, "fieldZ", 240, FlxEase.cubeOut, 0);
+
+	modMgr.queueEase(576+640, 580+640, "fieldZ", 240, FlxEase.lcubeOutinear, 1);
+    modMgr.queueEase(576+640, 580+640, "alpha", 0.5, FlxEase.cubeOut, 1);
+	modMgr.queueEase(576+640, 580+640, "fieldZ", 0, FlxEase.cubeOut, 0);
+    modMgr.queueEase(576+640, 580+640, "alpha", 0, FlxEase.cubeOut, 0);
+
+    modMgr.queueEase(1280, 644+640, "fieldZ", 0, FlxEase.cubeOut, -1);
+    modMgr.queueEase(1280, 644+640, "alpha", 0, FlxEase.cubeOut, -1);
+    modMgr.queueSet(1280, "sinerotate", 0, -1);
+
+
+
+	for(b in 256...320){
+		if(b % 2 == 0){
+			modManager.queueEaseLB(b - 0.2, 0.2, 'wiggle', -0.35 * i, 'cubeIn', -1);
+			modManager.queueEaseLB(b, 1, 'wiggle', 0, 'cubeOut', -1);
+
+            modManager.queueEaseLB(b - 0.2, 0.2, 'localrotateY', 35 * i, 'cubeIn', -1);
+			modManager.queueEaseLB(b, 1, 'localrotateY', 0, 'cubeOut', -1);
+			i *= -1;
+		}
+	}	
+}

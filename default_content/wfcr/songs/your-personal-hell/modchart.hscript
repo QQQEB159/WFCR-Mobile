@@ -1,0 +1,55 @@
+function generateModchart(){
+    modManager.queueSet(-32, "fieldYaw", 90, -1);
+
+    modManager.queueEase(248, 256, "fieldYaw", 0, "cubeOut", -1);
+    
+    modManager.queueEase(384, 400, "fieldYaw", 360, "cubeOut", -1);
+    modManager.queueEase(416, 432, "fieldYaw", 0, "cubeOut", -1);
+
+    modManager.queueEase(1024, 1056, "fieldZ", 720, "quadOut", 1);
+
+    modManager.queueEase(1086, 1104, "fieldPitch", 180, "cubeOut", 0);
+
+    modManager.queueEase(1118, 1136, "fieldPitch", 360, "cubeOut", 0);
+
+    modManager.queueEase(1152, 1212, "fieldPitch", 180, "cubeOut", 0);
+
+    modManager.queueEase(1216, 1244, "fieldYaw", 180, "cubeOut", 0);
+
+    modManager.queueEase(1248, 1270, "fieldYaw", 0, "cubeOut", 0);
+    
+    modManager.queueEase(1272, 1275, "fieldPitch", 180, "cubeOut", 0);
+    modManager.queueEase(1276, 1279, "fieldPitch", 0, "cubeOut", 0);
+
+
+    modManager.queueEase(1408, 1520, "fieldZ", 144, "quadOut", 1);
+
+    modManager.queueEase(1528, 1531, "fieldZ", 144-48, "quintOut", 1);
+    modManager.queueEase(1532, 1536, "fieldZ", 144-48-48, "quintOut", 1);
+
+
+    if(!ClientPrefs.midScroll){
+        modManager.queueEase(1024, 1056, "opponentSwap", 0.5, "quadOut", 0);
+        modManager.queueEase(1024, 1056, "confusionOffset", -360, "quadOut", 0);
+        modManager.queueEase(1024, 1056, "alpha", 1, "quadOut", 1);
+    
+        modManager.queueEase(1136, 1152, "alpha", 0.75, "quadOut", 1);
+        modManager.queueEase(1264, 1280, "alpha", 1, "quadOut", 1);
+    
+        modManager.queueEase(1344, 1360, "alpha", 0.75, "quadOut", 1);
+        
+        
+        modManager.queueEase(1528, 1531, "opponentSwap", 0.25, "quintOut", 0);
+        modManager.queueEase(1532, 1536, "opponentSwap", 0, "quintOut", 0);
+        
+        modManager.queueEase(1528, 1531, "alpha", 0.33, "quintOut", 1);
+        modManager.queueEase(1532, 1536, "alpha", 0, "quintOut", 1);
+    }
+
+
+    for(i in 496...514){
+        if(i % 2 == 0){
+            modManager.queueSet(i, "alpha", i % 4, -1); //fuck you were setting the alpha to 2 because im LAZY!
+        }
+    }
+}

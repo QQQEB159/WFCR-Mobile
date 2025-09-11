@@ -1,0 +1,33 @@
+var defaultSkin:Bool = false;
+var lastTime;
+
+function onTrigger(value1, value2, time){
+    if(lastTime == time){
+        return;
+    }
+    trace("JKHGDFJKHGDHJKGDF");
+    if(!defaultSkin){
+        for(note in game.allNotes){
+            note.frames = Paths.getSparrowAtlas(note.isQuant ? "QUANTNOTE_default" : "NOTE_default");
+            note.loadNoteAnims();
+        }
+        for(field in game.playfields){
+            for(strum in field.strumNotes){
+                strum.texture = ClientPrefs.noteSkin == "Quants" ? "QUANTNOTE_default" : "NOTE_default";
+            }
+        }
+    }
+    else{
+        for(note in game.allNotes){
+            note.frames = Paths.getSparrowAtlas("NOTE_assets");
+            note.loadNoteAnims();
+        }
+        for(field in game.playfields){
+            for(strum in field.strumNotes){
+                strum.texture = "NOTE_assets";
+            }
+        }
+    }
+    defaultSkin = !defaultSkin;
+    lastTime = time;
+}

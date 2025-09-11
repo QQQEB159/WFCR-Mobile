@@ -1,0 +1,20 @@
+{
+  "defaultZoom": 0.4,
+  "isPixelStage": false,
+  "boyfriend": [1025,  -50],
+  "girlfriend": [350, -25],
+  "opponent": [-150, -50],
+
+  "hide_girlfriend": false,
+
+  "camera_speed": 1,
+  "camera_opponent": [25,0],
+  "camera_girlfriend": [0,0],
+  "camera_boyfriend": [425,0],
+
+  "bg_color": "0xFFFFFFFF",
+
+  "directory": "",
+  "preload": [],
+  "preloadStrings": null
+}

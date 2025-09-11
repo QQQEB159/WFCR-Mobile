@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TextureAtlas imagePath="speaker.png" width="2329" height="550">
+	<SubTexture name="dance left0000" x="1" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0001" x="1" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0002" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0003" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0004" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0005" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0006" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0007" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0008" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0009" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0010" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0011" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0012" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0013" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+	<SubTexture name="dance left0014" x="1165" y="1" width="1163" height="548" frameX="-0" frameY="-0" frameWidth="1163" frameHeight="549"/>
+</TextureAtlas>

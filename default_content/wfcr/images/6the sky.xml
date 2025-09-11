@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="6the sky.png">
+<SubTexture name="6the sky idle0000" x="0" y="0" width="3000" height="1400" frameX="0" frameY="0" frameWidth="3000" frameHeight="1400" />
+<SubTexture name="6the sky idle0001" x="0" y="0" width="3000" height="1400" frameX="0" frameY="0" frameWidth="3000" frameHeight="1400" />
+<SubTexture name="6the sky idle0002" x="0" y="1400" width="3000" height="1400" frameX="0" frameY="0" frameWidth="3000" frameHeight="1400" />
+<SubTexture name="6the sky idle0003" x="3000" y="0" width="3000" height="1400" frameX="0" frameY="0" frameWidth="3000" frameHeight="1400" />
+<SubTexture name="6the sky idle0004" x="3000" y="0" width="3000" height="1400" frameX="0" frameY="0" frameWidth="3000" frameHeight="1400" />
+<SubTexture name="6the sky idle0005" x="3000" y="1400" width="3000" height="1400" frameX="0" frameY="0" frameWidth="3000" frameHeight="1400" />
+</TextureAtlas>

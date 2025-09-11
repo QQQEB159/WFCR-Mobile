@@ -1,0 +1,201 @@
+importClass("Sys");
+function getShaderFrag(file:String):String{
+    return File.getContent('content/wfcr/shaders/'+file+'.frag');
+}
+
+var barrel:CustomShader = new CustomShader(getShaderFrag('BarrelBlurEffect'));
+var vhs:CustomShader = new CustomShader(getShaderFrag('VHS'));
+var bloom:CustomShader = new CustomShader(getShaderFrag('BloomEffect'));
+
+var oldX:Int = 0;
+var oldY:Int = 0;
+
+var windowX:Int = 0;
+var windowY:Int = 0;
+var doWaveShit:Bool = false;
+
+var mult:Float = 1;
+
+function getCenteredWindowX():Float {
+    return (FlxG.stage.window.display.currentMode.width / 2) - (FlxG.stage.window.width / 2);
+}
+
+function getCenteredWindowY():Float {
+    return (FlxG.stage.window.display.currentMode.height / 2) - (FlxG.stage.window.height / 2);
+}
+
+function onCreatePost(){
+    if(Sys.systemName() == "Linux"){return;}
+    barrel.setBool('doChroma', true);
+    barrel.setFloat('barrel', 0);
+    barrel.setFloat('zoom', 1);
+    barrel.setFloat('y', 0);
+    barrel.setFloat('x', 0);
+    barrel.setFloat('iTime', 0);
+
+    vhs.setFloat('iTime', 0);
+
+    bloom.setFloat('effect', 0);
+    bloom.setFloat('strength', 0);
+    bloom.setFloat('contrast', 1);
+    bloom.setFloat('brightness', 0);
+
+    if(ClientPrefs.shaders == "All" && ClientPrefs.flashing){
+        game.camHUD.filters = game.camGame.filters = [new ShaderFilter(vhs)];
+    }
+   
+    FlxG.fullscreen = false;
+
+    oldX = FlxG.stage.window.x;
+    oldY = FlxG.stage.window.y;
+
+    FlxG.stage.window.x = 0;
+    FlxG.stage.window.y = 0;
+    FlxG.stage.window.borderless = true;
+    FlxG.stage.window.width = FlxG.stage.window.display.currentMode.width;
+    FlxG.stage.window.height = FlxG.stage.window.display.currentMode.height;
+
+    /*FlxG.signals.gameResized.removeAll();
+    FlxG.signals.focusGained.removeAll();*/
+}
+var iTime:Float = 0;
+function onUpdatePost(elapsed){
+    if(Sys.systemName() == "Linux"){return;}
+    iTime += elapsed;
+    barrel.setFloat('iTime', iTime);
+    vhs.setFloat('iTime', iTime);
+    FlxG.stage.window.x = FlxMath.lerp(FlxG.stage.window.x, windowX, elapsed * 20);
+    FlxG.stage.window.y = FlxMath.lerp(FlxG.stage.window.y, windowY, elapsed * 20);
+    
+    if(doWaveShit){
+        windowX = getCenteredWindowX() + Math.sin(iTime * 2 * mult) * 200 * mult;
+        windowY = getCenteredWindowY() + Math.cos(iTime * 2 * mult) * 100 * mult;
+    }
+}
+function onSectionHit(){
+    if(Sys.systemName() == "Linux"){return;}
+    if(curBeat < 132) return;
+    barrel.setFloat("barrel", -1.75);
+    barrel.tween("barrel", 0, 0.75, FlxEase.circOut);
+    bloom.setFloat("contrast", 1.25);
+    bloom.tween("contrast", 1, 0.75, FlxEase.circOut);
+
+    
+    if(curStep == 2736){
+        game.endSong(); //??? why do i need to do this??
+    }
+}
+function onBeatHit(){
+    if(Sys.systemName() == "Linux"){return;}
+    if(curBeat == 124){
+        FlxG.stage.window.width -= 1;
+        FlxG.stage.window.height -= 1;
+        FlxTween.tween(FlxG.stage.window, {opacity: 0}, 0.75);
+    }
+    if(curBeat == 132){
+        game.camHUD.filters = game.camGame.filters = [];
+        FlxTween.tween(FlxG.stage.window, {opacity: 1}, 0.75, {ease: FlxEase.circOut});
+        windowX = (FlxG.stage.window.display.currentMode.width / 2) - (1280 / 2);
+        windowY = (FlxG.stage.window.display.currentMode.height / 2) - (720 / 2);
+        FlxG.stage.window.x = windowX;
+        FlxG.stage.window.y = windowY;
+        FlxG.stage.window.width = 1280;
+        FlxG.stage.window.height = 720;
+    }
+    if(curBeat == 196 || curBeat == 292 || curBeat == 532 || curBeat == 628){
+        doWaveShit = true;
+    }
+    if(curBeat == 228 || curBeat == 340 || curBeat == 564){
+        doWaveShit = false;
+        windowX = getCenteredWindowX();
+        windowY = getCenteredWindowY();
+    }
+    if(curBeat == 532){
+        mult = 1.15;
+    }
+}
+function onDestroy(){
+    if(Sys.systemName() == "Linux"){return;}
+    FlxG.stage.window.x = oldX;
+    FlxG.stage.window.y = oldY;
+    FlxG.stage.window.width = 1280;
+    FlxG.stage.window.height = 720;
+    FlxG.stage.window.opacity = 1;
+    FlxG.stage.window.borderless = false;
+
+    /*FlxG.signals.gameResized.add((w, h) -> FlxG.game.resetSpriteCaches());
+    FlxG.signals.focusGained.add(() -> FlxG.game.resetSpriteCaches);*/
+}
+
+function onEvent(name, argument1, argument2, strumTime){
+    if(Sys.systemName() == "Linux"){return;}
+    switch(name.toLowerCase()){
+        case "window bop x":
+            FlxG.stage.window.x += Std.parseFloat(argument1);
+
+        case "window bop y":
+            FlxG.stage.window.y -= Std.parseFloat(argument1);
+
+        case "add window x":
+            windowX += Std.parseFloat(argument1);
+
+        case "add window y":
+            windowY -= Std.parseFloat(argument1);
+
+    }
+}
+
+function generateModchart()
+{
+	var modMgr = game.modManager;
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEase(1360, 1368, "alpha", 0.5, FlxEase.circOut, 1);
+    }
+	modMgr.queueEase(1360, 1368, "fieldZ", -720, FlxEase.circOut, 0);
+    modMgr.queueEase(1360, 1368, "fieldX", 150, FlxEase.circOut, 0);
+    modMgr.queueEaseP(1360, 1368, "tipsyZ", 150, FlxEase.circOut, -1);
+    modMgr.queueEaseP(1360, 1368, "tipsyZSpeed", 1.5, FlxEase.circOut, -1);
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEaseP(1360, 1368, "opponentSwap", 50, FlxEase.circOut, 1);
+    }
+
+    modMgr.queueEase(1420, 1424, "fieldZ", -720, FlxEase.circOut, 1);
+    modMgr.queueEase(1420, 1424, "fieldZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(1420, 1424, "fieldX", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(1420, 1424, "fieldX", -150, FlxEase.circOut, 1);
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEaseP(1420, 1424, "opponentSwap", 0, FlxEase.circOut, 1);
+        modMgr.queueEaseP(1420, 1424, "opponentSwap", 50, FlxEase.circOut, 0);
+    }
+
+    modMgr.queueEase(1484, 1488, "fieldZ", 720, FlxEase.circOut, 1);
+
+    modMgr.queueEase(1516, 1530, "fieldZ", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(1516, 1530, "fieldZ", 720, FlxEase.circOut, 0);
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEaseP(1516, 1530, "opponentSwap", 50, FlxEase.circOut, 1);
+        modMgr.queueEaseP(1516, 1530, "opponentSwap", 0, FlxEase.circOut, 0);
+    }
+    modMgr.queueEase(1516, 1530, "fieldX", 0, FlxEase.circOut, 1);
+    modMgr.queueEase(1516, 1530, "fieldX", 150, FlxEase.circOut, 0);
+
+    modMgr.queueEase(1676, 1680, "fieldZ", -720, FlxEase.circOut, 1);
+    modMgr.queueEase(1676, 1680, "fieldZ", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(1676, 1680, "fieldX", 0, FlxEase.circOut, 0);
+    modMgr.queueEase(1676, 1680, "fieldX", -150, FlxEase.circOut, 1);
+    modMgr.queueEaseP(1676, 1680, "opponentSwap", 0, FlxEase.circOut, 1);
+    modMgr.queueEaseP(1676, 1680, "opponentSwap", 50, FlxEase.circOut, 0);
+
+    modMgr.queueEase(1740, 1744, "fieldZ", 720, FlxEase.circOut, 1);
+
+    modMgr.queueEase(1872, 1876, "fieldZ", 0, FlxEase.circOut, -1);
+    modMgr.queueEase(1872, 1876, "fieldX", 0, FlxEase.circOut, -1);
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEaseP(1872, 1876, "opponentSwap", 0, FlxEase.circOut, -1);
+    }
+    modMgr.queueEaseP(1872, 1876, "tipsyZ", 0, FlxEase.circOut, -1);
+    modMgr.queueEaseP(1872, 1872, "tipsyZSpeed", 0, FlxEase.circOut, -1);
+    if(!ClientPrefs.midScroll){
+        modMgr.queueEase(1872, 1872, "alpha", 0, FlxEase.circOut, 1);
+    }
+}
