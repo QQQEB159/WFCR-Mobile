@@ -138,7 +138,7 @@ class UpdaterState extends MusicBeatState {
 		
 	}
 
-	inline static var OS:String = #if windows 'windows' #elseif mac 'mac' #elseif linux 'linux' #end;
+	inline static var OS:String = #if windows 'windows' #elseif mac 'mac' #elseif linux 'linux' #elseif android 'android' #elseif ios 'ios' #end;
 
 	function clearFiles(path:String){
 		if (FileSystem.exists(path))
