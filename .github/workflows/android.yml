@@ -38,7 +38,7 @@ jobs:
           haxelib git lime https://github.com/FNF-SE/lime
           haxelib install openfl 9.2.2
           haxelib install flixel 5.7.0
-          haxelib install flixel-addons 3.2.3
+          haxelib install flixel-addons 3.2.2
           haxelib install flixel-ui 2.6.1
           haxelib install hxvlc 1.7.1
           haxelib git hscript https://github.com/nebulazorua/t-hscript

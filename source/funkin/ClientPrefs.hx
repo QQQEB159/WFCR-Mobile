@@ -88,6 +88,13 @@ class ClientPrefs
 					"type" => "percent" // saved value is value / 100
 				]
 			},
+			"screensaver" => {
+				display: "Allow Phone Screensaver",
+				desc: "'If checked, the phone will sleep after going inactive for few seconds.\n(The time depends on your phone\'s options)",
+				type: Toggle,
+				value: false,
+				data: []
+			},
 			"storageType" => {
 				display: "Storage Type",
 				desc: "Which folder Troll Engine should use?\n(CHANGING THIS MAKES DELETE YOUR OLD FOLDER!!",
