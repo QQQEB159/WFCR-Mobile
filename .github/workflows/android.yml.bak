@@ -47,7 +47,7 @@ jobs:
           haxelib install moonchart 0.4.0
           haxelib git hxNoise https://github.com/whuop/hxNoise
           haxelib git random https://github.com/jasononeil/hxrandom
-          haxelib git hxopus https://github.com/Vortex2Oblivion/hxopus
+          haxelib install hxopus
           haxelib list
       
       - name: Setup Lime
