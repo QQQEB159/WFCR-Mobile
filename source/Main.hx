@@ -28,6 +28,10 @@ import sys.io.Process;
 import haxe.io.BytesOutput;
 #end
 
+#if mobile
+import mobile.CopyState;
+#end
+
 using StringTools;
 
 final class Version
@@ -82,6 +86,16 @@ class Main extends Sprite
 	@:noCompletion inline static function get_volumeChangedEvent() return FlxG.sound.onVolumeChange;
 	#end
 
+	public static function main():Void
+	{
+		Lib.current.addChild(new Main());
+		#if cpp
+		cpp.NativeGc.enable(true);
+		#elseif hl
+		hl.Gc.enable(true);
+		#end
+	}
+	
 	////
 	public function new() {
 		Log.trace = (v:Dynamic, ?infos:PosInfos) -> untyped __cpp__("std::cout << {0}", '${Log.formatOutput(v, infos)}\n');
@@ -102,6 +116,15 @@ class Main extends Sprite
 		untyped __js__("sadfkjhasdfjklhasdf");
 		#end
 
+		#if mobile
+		#if android
+		StorageUtil.requestPermissions();
+		#end
+		Sys.setCwd(StorageUtil.getStorageDirectory());
+		#end
+
+		CrashHandler.init();
+		
 		super();
 
 		////
@@ -140,6 +163,7 @@ class Main extends Sprite
 		}
 		#end
 
+		#if desktop
 		final screenWidth = Application.current.window.width;
 		final screenHeight = Application.current.window.height;
 
@@ -161,11 +185,12 @@ class Main extends Sprite
 
 		resizeWindow(gameWidth * scaleModifier, gameHeight * scaleModifier);
 		centerWindow();
+		#end
 
 		////		
 		StartupState.nextState = nextState;
 
-		var game = new FNFGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen);
+		var game = new FNFGame(gameWidth, gameHeight, #if (mobile && MODS_ALLOWED) !CopyState.checkExistingFiles() ? CopyState : #end initialState, framerate, framerate, skipSplash, startFullscreen);
 		addChild(game);
 
 		FlxG.sound.volume = FlxG.save.data.volume;
@@ -184,6 +209,13 @@ class Main extends Sprite
 
 		#if linux
 		Lib.current.stage.window.setIcon(Image.fromFile("icon.png"));
+		#end
+		
+		#if mobile
+		lime.system.System.allowScreenTimeout = ClientPrefs.screensaver;
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK]; 
+		#end
 		#end
 	}
 

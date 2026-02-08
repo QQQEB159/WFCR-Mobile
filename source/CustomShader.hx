@@ -35,11 +35,11 @@ class CustomShader extends FlxRuntimeShader {
 		});
 	}
 
-	public static function initShader(id:String, file:String, ?glslVersion:Int = 120) {
+	public static function initShader(id:String, file:String, ?glslVersion:Int = 100) {
 		#if debug
 		trace("found shader at: " + Paths.shaderFragment(file));
 		#end
-		var funnyCustomShader:CustomShader = new CustomShader(sys.io.File.getContent('content/wfcr/shaders/${file}.frag'), null);
+		var funnyCustomShader:CustomShader = new CustomShader(sys.io.File.getContent(#if mobile Sys.getCwd() + #end 'content/wfcr/shaders/${file}.frag'), null);
 		PlayState.instance.modchartShaders.set(id, funnyCustomShader);
 	}
 

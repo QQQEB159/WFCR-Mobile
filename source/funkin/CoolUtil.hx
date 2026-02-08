@@ -290,4 +290,13 @@ class CoolUtil {
 	inline public static function toPercent(n:Float):Int{
 		return Std.int((n / 255) * 100);
 	}
+	
+	public static function showPopUp(message:String, title:String):Void
+	{
+		/*#if android
+		android.Tools.showAlertDialog(title, message, {name: "OK", func: null}, null);
+		#else*/
+		FlxG.stage.window.alert(message, title);
+		//#end
+	}
 }

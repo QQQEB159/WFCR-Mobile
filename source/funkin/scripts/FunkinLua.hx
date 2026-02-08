@@ -1863,14 +1863,14 @@ class FunkinLua extends FunkinScript {
 			return str.endsWith(end);
 		});
 
-		addCallback("initShader", function(id:String, file:String, ?glslVersion:Int = #if linux 100 #else 120 #end) {
+		addCallback("initShader", function(id:String, file:String, ?glslVersion:Int = #if (linux || mobile) 100 #else 120 #end) {
 			if (ClientPrefs.shaders == "None") {
 				return;
 			}
 			#if debug
 			trace("found shader at: " + Paths.shaderFragment(file));
 			#end
-			var funnyCustomShader:CustomShader = new CustomShader(sys.io.File.getContent('content/wfcr/shaders/${file}.frag'), null);
+			var funnyCustomShader:CustomShader = new CustomShader(sys.io.File.getContent(#if mobile Sys.getCwd() + #end 'content/wfcr/shaders/${file}.frag'), null);
 			PlayState.instance.modchartShaders.set(id, funnyCustomShader);
 		});
 

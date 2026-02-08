@@ -133,6 +133,11 @@ class Paths
 		}
 		// run the garbage collector for good measure lmfao
 		openfl.system.System.gc();
+		#if cpp
+		cpp.NativeGc.run(true);
+		#elseif hl
+		hl.Gc.major();
+		#end
 	}
 
 	/** removeBitmap(FlxSprite.graphic.key); **/
@@ -209,7 +214,7 @@ class Paths
 
 	inline public static function getPreloadPath(file:String = '')
 	{
-		return 'assets/$file';
+		return #if mobile Sys.getCwd() + #end 'assets/$file';
 	}
 
 	/*
@@ -404,7 +409,7 @@ class Paths
 	}
 
 	/** returns a FlxRuntimeShader but with file names lol **/ 
-	public static function getShader(fragFile:String = null, vertFile:String = null, version:Int = 120):FlxRuntimeShader
+	public static function getShader(fragFile:String = null, vertFile:String = null, version:Int = 100):FlxRuntimeShader
 	{
 		try{
 			var fragPath:Null<String> = fragFile==null ? null : getShaderFragment(fragFile);
@@ -617,7 +622,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
-		return 'content/$key';
+		return #if mobile Sys.getCwd() + #end 'content/$key';
 
 	inline static public function getGlobalContent(){
 		return globalContent;
@@ -812,6 +817,27 @@ class Paths
 
 	public static inline function getString(key:String, ?defaultValue:String):String
 		return hasString(key) ? _getString(key) : (defaultValue==null ? key : defaultValue);
+		
+	public static function readDirectory(directory:String):Array<String>
+	{
+		#if MODS_ALLOWED
+		return FileSystem.readDirectory(directory);
+		#else
+		var dirs:Array<String> = [];
+		for (dir in Assets.list().filter(folder -> folder.startsWith(directory)))
+		{
+			@:privateAccess
+			for (library in lime.utils.Assets.libraries.keys())
+			{
+				if (library != 'default' && Assets.exists('$library:$dir') && (!dirs.contains('$library:$dir') || !dirs.contains(dir)))
+					dirs.push('$library:$dir');
+				else if (Assets.exists(dir) && !dirs.contains(dir))
+					dirs.push(dir);
+			}
+		}
+		return dirs.map(dir -> dir.substr(dir.lastIndexOf("/") + 1));
+		#end
+	}
 }
 
 class HTML5Paths {

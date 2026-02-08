@@ -98,7 +98,7 @@ class FunkinHScript extends FunkinScript
 			var msg = "Error parsing hscript! " + e.message;
 			trace(msg);
 
-			#if desktop
+			#if sys
 			var title = "Error on haxe script!";
 
 			#if (cpp && windows)
